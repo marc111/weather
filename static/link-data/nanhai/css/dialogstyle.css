@@ -1,0 +1,89 @@
+﻿body
+{
+    margin: 0 0 0 0;
+    width: 100%;
+    background-color: #eefeff;
+    overflow: hidden;
+}
+.hidscroll
+{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 580px;
+    height: 365px;
+}
+.hidscroll2
+{
+    overflow: visible;
+    width: 550px;
+    height: auto;
+}
+.bar
+{
+    width: 100%;
+    height: 35px;
+    overflow: hidden;
+    background-image: url(image/dtb.png);
+    background-size: 100% 100%;
+}
+.bar img
+{
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+    margin-right: 10px;
+    float: right;
+    cursor: pointer;
+}
+.bar p
+{
+    display: inline-block;
+    margin: 0;
+    padding-left: 20px;
+    padding-top: 2px;
+    font-size: 150%;
+    font-weight: bold;
+    color: White;
+    text-shadow: 1px 1px 1px #333333;
+}
+.info
+{
+    width: 90%;
+    margin-top: 10px;
+}
+
+.info th
+{
+    text-align: left;
+    font-size: 125%;
+    width: 115px;
+}
+.info td
+{
+        color: #3586ff;
+    font-size: 125%;
+}
+.list
+{
+    width: 90%;
+    margin-top: 20px;
+}
+.list th
+{
+    font-size: 120%;
+}
+.list td
+{
+    font-size: 120%;
+    text-align: center;
+}
+ .list td p
+{
+
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+

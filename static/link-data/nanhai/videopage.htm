@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/dialogstyle2.css" />
+    <script>
+        function closedialog() {
+            window.parent.window.closedialog();
+        }
+        function init() {
+            var video = document.getElementById("vi");
+            video.height = window.innerHeight - 35;
+            document.getElementById("v1").src = "video/" + GetRequest("id") + ".mp4";
+            video.load();
+        }
+        function GetRequest(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        function max() {
+            var h = window.parent.window.maxgk();
+            var video = document.getElementById("vi");
+            video.height = window.innerHeight;
+            document.getElementById("maxbt").className = "close";
+            document.getElementById("unmaxbt").className = "";
+            document.getElementById("bar").className = "unbar";
+        }
+        function unmax() {
+            var h = window.parent.window.unmaxgk();
+            var video = document.getElementById("vi");
+            video.height = window.innerHeight - 35;
+            document.getElementById("maxbt").className = "";
+            document.getElementById("unmaxbt").className = "close";
+            document.getElementById("bar").className = "";
+        }
+    </script>
+</head>
+<body onload="init()">
+    <div id="bar">
+        <p>
+            荷村水闸视频</p>
+            <!--<div class="topbarClose" onclick="closedialog()">X</div>-->
+        <img class="topbarClose" src="css/image/dcbt.png" onclick="closedialog()" />
+        <img id="maxbt" src="css/image/vmax.png" onclick="max()" /><img id="unmaxbt" src="css/image/vunmax.png" class="close" onclick="unmax()" /></div>
+    <center>
+        <video id="vi" controls="controls" autoplay="autoplay" height="465px">
+            <source id="v1">
+</video>
+    </center>
+</body>
+</html>

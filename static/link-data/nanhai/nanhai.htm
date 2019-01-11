@@ -1,0 +1,839 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>洪水展示平台</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script type="text/javascript" src="threejs/three.js"></script>
+		<script type="text/javascript" src="threejs/loader/obj/OBJLoader.js"></script>
+		<script type="text/javascript" src="threejs/loader/obj/DDSLoader.js"></script>
+		<script type="text/javascript" src="threejs/loader/obj/MTLLoader.js"></script>
+		<script src="threejs/water/Mirror.js"></script>
+		<script src="threejs/water/WaterShader.js"></script>
+		<script type="text/javascript" src="threejs/THREEx.KeyboardState.js"></script>
+		<script type="text/javascript" src="threejs/THREEx.FullScreen.js"></script>
+		<script type="text/javascript" src="tweenjs/Tween.js"></script>
+		<script src="setdata.js"></script>
+		<script src="js/one.js" type="text/javascript"></script>
+		<script src="js/two.js" type="text/javascript"></script>
+		<script src="js/three.js" type="text/javascript"></script>
+		<script src="js/four.js" type="text/javascript"></script>
+	</head>
+
+	<body onload="init()" onmouseup="timebarmouseup()" onmousemove="barto(event)" style="font-family: '微软雅黑';">
+		<!--<div class="head2" onselectstart="return false;">
+		</div>
+		<div class="head3" onselectstart="return false;">
+		</div>-->
+		<div class="head" onselectstart="return false;">
+			<img src="css/image/headerBg.png" onclick="webBack()" />
+			<p> 北江大堤、佛山大堤、樵桑联围和南铁鼎围洪水展示平台</p>
+		</div>
+		<div id="ThreeJS" oncontextmenu="return false;" onselectstart="return false;">
+		</div>
+		
+		<div class="leftdialogs" id="left">
+			<div class="inner">
+				<div class="inner2">
+					<table class="datatable" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr id="datatableHead" class="datatableHead" onselectstart="return false;">
+								<td>工况模拟</td>
+							</tr>
+							<!--<tr class="bar" id="headbar" onselectstart="return false;">
+								<th class='active' id='tab0' onclick='activetab(0)'>
+									<div>工况模拟</div>
+								</th>
+								<th id='tab1' class='unactive' onclick='activetab(1)'>
+									信息查询
+								</th>
+							</tr>-->
+							<tr id="tab0inner">
+								<td colspan="3">
+									<div>
+										<div>
+											<center>
+												<div class="parttitle">
+													工况选择：</div>
+												<select onchange="selectchange(this.value)">
+													<option value="TNT">铁牛坦险段（百年一遇洪水）</option>
+													<option value="LWJ">龙湾基险段（百年一遇洪水）</option>
+													<option value="YJQ">杨家前险段（百年一遇洪水）</option>
+													<option value="BAX">北岸讯险段（百年一遇洪水）</option>
+													<option value="XLXC">西联新村险段（百年一遇洪水）</option>
+													<option value="DD">大凼险段（百年一遇洪水）</option>
+													<option value="MS">马沙险段（百年一遇洪水）</option>
+													<option value="SSSZ">狮山水闸险段（百年一遇洪水）</option>
+												</select>
+											</center>
+										</div>
+										<center>
+											<div class="showlevel">
+												<table class="showleveltb">
+													<tr>
+														<td>
+															<input type="checkbox" id="showlevel" onchange="showlevelchange()" />
+														</td>
+														<td>
+															<label for="showlevel" onselectstart="return false;">
+	                                                        显示淹没等级</label>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</center>
+										<center>
+											<table cellpadding="0" cellspacing="0" border="0" class="abstract">
+												<tr>
+													<th>
+														工况介绍:
+													</th>
+													<td>
+														<!--<img src="css/image/vbt.png" />-->
+														<div onclick="showgk()" class="videoBtn">
+															<img id="videoBtnImg" src="css/image/icon.png"/>
+															<div>视频</div>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td id="gkjsdata" colspan="2">
+													</td>
+												</tr>
+											</table>
+										</center>
+										<center>
+											<table cellpadding="0" cellspacing="0" border="0" class="pasttimeclass">
+												<tr>
+													<th>
+														已过时间：
+													</th>
+													<td id="pasttime">
+													</td>
+												</tr>
+											</table>
+										</center>
+										<center>
+											<div class="parttitle">
+												统计信息：</div>
+											<div id="statistics" class="statisticsclass">
+											</div>
+										</center>
+										<center>
+											<div class="parttitle">
+												淹没水深：</div>
+											<img class="tl" src="css/image/tl.png" /></center>
+									</div>
+								</td>
+							</tr>
+							<tr id="tab1inner" class="close" onselectstart="return false;">
+								<td colspan="3">
+									<div class="list" id="dialoglist">
+										<div id="listnode1">
+											<div class="listtitle" onclick="listchage(1)">
+												<p>堤围</p>
+											</div>
+											<ul class="town">
+												<li>
+													<ul class="activetarget">
+														<li onclick="showdw(1)">
+															<p>
+																樵桑联围</p>
+														</li>
+														<li onclick="showdw(2)">
+															<p>
+																南铁鼎围</p>
+														</li>
+														<li onclick="showdw(3)">
+															<p>
+																佛山大堤</p>
+														</li>
+														<li onclick="showdw(4)">
+															<p>
+																北江大堤南海段</p>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+										<div id="listnode2">
+											<div class="listtitle" onclick="listchage(2)">
+												<p>
+													水闸</p>
+											</div>
+											<ul class="town">
+												<li>
+													<div class='townname' onclick="showtownlist(1,'狮山镇')">
+														<p>
+															狮山镇</p>
+													</div>
+													<ul id='townlist1'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(2,'丹灶镇')">
+														<p>
+															丹灶镇</p>
+													</div>
+													<ul id='townlist2'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(3,'桂城街道')">
+														<p>
+															桂城街道</p>
+													</div>
+													<ul id='townlist3'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(4,'九江镇')">
+														<p>
+															九江镇</p>
+													</div>
+													<ul id='townlist4'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(5,'西樵镇')">
+														<p>
+															西樵镇</p>
+													</div>
+													<ul id='townlist5'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(6,'大沥镇')">
+														<p>
+															大沥镇</p>
+													</div>
+													<ul id='townlist6'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(7,'里水镇')">
+														<p>
+															里水镇</p>
+													</div>
+													<ul id='townlist7'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+										<div id="listnode3">
+											<div class="listtitle" onclick="listchage(3)">
+												<p>
+													船闸</p>
+											</div>
+											<ul class="town">
+												<li>
+													<div class='townname' onclick="showtownlist(8,'狮山镇')">
+														<p>
+															狮山镇</p>
+													</div>
+													<ul id='townlist8'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(9,'丹灶镇')">
+														<p>
+															丹灶镇</p>
+													</div>
+													<ul id='townlist9'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(10,'桂城街道')">
+														<p>
+															桂城街道</p>
+													</div>
+													<ul id='townlist10'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(11,'九江镇')">
+														<p>
+															九江镇</p>
+													</div>
+													<ul id='townlist11'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(12,'西樵镇')">
+														<p>
+															西樵镇</p>
+													</div>
+													<ul id='townlist12'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(13,'大沥镇')">
+														<p>
+															大沥镇</p>
+													</div>
+													<ul id='townlist13'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(14,'里水镇')">
+														<p>
+															里水镇</p>
+													</div>
+													<ul id='townlist14'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+										<div id="listnode4">
+											<div class="listtitle" onclick="listchage(4)">
+												<p>
+													电排站</p>
+											</div>
+											<ul class="town">
+												<li>
+													<div class='townname' onclick="showtownlist(15,'狮山镇')">
+														<p>
+															狮山镇</p>
+													</div>
+													<ul id='townlist15'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(16,'丹灶镇')">
+														<p>
+															丹灶镇</p>
+													</div>
+													<ul id='townlist16'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(17,'桂城街道')">
+														<p>
+															桂城街道</p>
+													</div>
+													<ul id='townlist17'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(18,'九江镇')">
+														<p>
+															九江镇</p>
+													</div>
+													<ul id='townlist18'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(19,'西樵镇')">
+														<p>
+															西樵镇</p>
+													</div>
+													<ul id='townlist19'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(20,'大沥镇')">
+														<p>
+															大沥镇</p>
+													</div>
+													<ul id='townlist20'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+												<li>
+													<div class='townname' onclick="showtownlist(21,'里水镇')">
+														<p>
+															里水镇</p>
+													</div>
+													<ul id='townlist21'>
+														<li>
+															<p>
+																无</p>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+										<div id="listnode102">
+											<div class="listtitle" onclick="listchage(102)">
+												<p>
+													视频说明</p>
+											</div>
+											<ul class="town">
+												<li>
+													<ul class="activetarget">
+														<li onclick="showvideo(0)">
+															<p>
+																荷村水闸视频（国语）</p>
+														</li>
+														<li onclick="showvideo(1)">
+															<p>
+																荷村水闸视频（粤语）</p>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!--<div class="switch" id="leftswitch">
+				<div class="switchbt" onclick="leftclose()"></div>
+			</div>-->
+			
+			<div class="switchbt" onclick="leftclose()">
+				<img id="switchbtImg" src="css/image/leftReadL.png"/>
+			</div>
+			
+			<div class="bar" id="headbar">
+				<div class="baractive" onclick='activetab(0)'>工况模拟</div>
+				<div onclick='activetab(1)'>信息查询</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		<div id="timebarcontrol" class="tbtransparent">
+			<!--<div class="timebarmiddle">
+			</div>
+			<div class="timebarright">
+			</div>-->
+			<div id="timebar" class="timebarclass" onselectstart="return false;">
+				<div class="timebt">
+					<img src="css/image/tbsdw.png" onclick="ymslowdown()" />
+					<div id="tbp" class="tbplay" onclick="ymstop(false)">
+					</div>
+					<img src="css/image/tbstop.png" onclick="ymstop(true)" />
+					<img src="css/image/tbsup.png" onclick="ymspeedup()" /></div>
+				<div class="timebarbg" id="timebarbackground" onmousedown="timebarmousedown(event)">
+					<div id="currenttimebar" class="timebarcurrent">
+					</div>
+				</div>
+				<table class="timebarjump" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>
+							跳到
+						</td>
+						<td>
+							<input class="text" id="jumptotext" />
+						</td>
+						<td>
+							h
+						</td>
+						<td>
+							<img src="css/image/tbjump.png" onclick="jumpto()" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<iframe id="dialogframe" class="close" src="about:blank"></iframe>
+		<div id="loadingdialog" class="sdialog">
+		</div>
+		<div class="tool">
+			<table class="toolbt" onclick="showlocationlist()" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td class="btim">
+						<img src="css/image/tool_locate.png" />
+					</td>
+					<td class="bttext">
+						定点
+					</td>
+				</tr>
+			</table>
+			<div class="border">
+			</div>
+			<table onclick="showflylist()" class="toolbt" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td class="btim">
+						<img src="css/image/tool_fly.png" />
+					</td>
+					<td class="bttext">
+						飞行
+					</td>
+				</tr>
+			</table>
+			<div class="border">
+			</div>
+			<table class="toolbt" cellpadding="0" cellspacing="0" border="0" onclick="showhelp()">
+				<tr>
+					<td class="btim">
+						<img src="css/image/tool_help.png" />
+					</td>
+					<td class="bttext">
+						帮助
+					</td>
+				</tr>
+			</table>
+		</div>
+		<table id="flylist" class="close" cellpadding="0" cellspacing="0">
+			<tr class="flylinebar">
+				<td class="flylinebartext">
+					飞行路线
+				</td>
+				<td>
+					<img class="toolboxclosebt" src="css/image/flyclosebt.png" onclick="showflylist()" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="linelist">
+						<span>当前路线：</span>
+						<div onclick="showflylines()" class="linelisthead">
+							<p id="currentline">
+								沿江飞行</p>
+						</div>
+						<table id="linelistdrop" class="close" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td onclick="playline(lines,0)">
+									<p>
+										沿江飞行</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="flylinebar">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td onclick="playline(lines,1)">
+									<p>
+										高空飞行</p>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<center>
+						<div class="flycontrolbar">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr class="flytimecontrol">
+				<td colspan="2">
+					<center>
+						<img onclick=" linespeeddown() " src="css/image/fly_slowdown.png" />
+						<img onclick="restartline()" src="css/image/fly_restart.png" />
+						<div id="playbt" class="playstyle2" onclick="pauseline()">
+						</div>
+						<img onclick=" stopline() " src="css/image/fly_stop.png" /><img class="last" onclick="linespeedup()" src="css/image/fly_speedup.png" /></center>
+				</td>
+			</tr>
+		</table>
+		<table id="helpdialog" class="close" cellpadding="0" cellspacing="0">
+			<tr class="helpbar">
+				<td class="helpbartext">
+					使用帮助
+				</td>
+				<td>
+					<img class="toolboxclosebt" src="css/image/flyclosebt.png" onclick="showhelp()" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="helptext1">
+					<p>
+						键盘w：镜头前移</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="helptext">
+					<p>
+						键盘s：镜头后移</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="helptext">
+					<p>
+						键盘a：镜头左移</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="helptext">
+					<p>
+						键盘d：镜头右移</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="helptext">
+					<p>
+						键盘q：镜头向左旋转</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="helptext">
+					<p>
+						键盘q：镜头向右旋转</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="helptext">
+					<p>
+						鼠标左键：镜头旋转</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="helptext">
+					<p>
+						鼠标右键：镜头平移</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="helptext">
+					<p>
+						鼠标中键（拖动、滚动）：前进后退</p>
+				</td>
+			</tr>
+		</table>
+		<table id="locationlist" class="close" cellpadding="0" cellspacing="0">
+			<tr>
+				<td onclick="zoomto(cpoints[0])">
+					<p>
+						初始视角</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[1])">
+					<p>
+						狮山视角</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[2])">
+					<p>
+						丹灶视角</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[3])">
+					<p>
+						桂城视角</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[4])">
+					<p>
+						九江视角</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[5])">
+					<p>
+						西樵视角</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[6])">
+					<p>
+						大沥视角</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[7])">
+					<p>
+						里水视角</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[8])">
+					<p>
+						溃口视角1</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[9])">
+					<p>
+						溃口视角2</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<div class="toollistborder">
+						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td onclick="zoomto(cpoints[10])">
+					<p>
+						溃口视角3</p>
+				</td>
+			</tr>
+		</table>
+		<script type="x-shader/x-vertex" id="vertexshader">
+
+			attribute float size; attribute vec4 customColor; varying vec4 vColor; void main() { vColor = customColor; vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 ); gl_PointSize = size * ( 300.0 / -mvPosition.z ); gl_Position = projectionMatrix * mvPosition; }
+
+		</script>
+		<script type="x-shader/x-fragment" id="fragmentshader">
+
+			uniform vec4 color; uniform sampler2D texture; varying vec4 vColor; void main() { gl_FragColor = vec4( vColor[0]/255.0,vColor[1]/255.0,vColor[2]/255.0, vColor[3] ); }
+
+		</script>
+	</body>
+
+</html>
