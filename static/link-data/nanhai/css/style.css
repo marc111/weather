@@ -1,0 +1,992 @@
+﻿body {
+	margin: 0 0 0 0;
+}
+
+input:-webkit-autofill {
+	box-shadow: 0 0 0px 100px white inset !important;
+}
+
+.full {
+	height: 100%;
+	width: 100%;
+	cursor: default;
+}
+
+.close {
+	display: none;
+}
+
+.head {
+	/*pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(image/top_left.jpg);
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 110px;
+	overflow: hidden;
+	cursor: default;*/
+	width: 100%;
+	height: 49px;
+	/*background-image: url(image/headerBg.png);*/
+	/*background-size: 100% 100%;*/
+	background-color: #e4eaf4;
+    /*box-shadow: 0 1px 2px 2px #d3d3d3;*/
+	position: fixed;
+	top: 0;
+}
+.head > img {
+	height: 50px;
+	position: absolute;
+	left: 0;
+	cursor: pointer;
+}
+.head p {
+	width: 100%;
+	height: 49px;
+	text-align: center;
+	line-height: 50px;
+	/*display: block;*/
+	/*margin-left: 200px;
+	margin-top: 58px;*/
+	/*font-weight: bold;*/
+	font-size: 20px;
+	/*color: #464646;*/
+	color: #008CEE;
+	margin: 0;
+	/*font-family: "SimHei", 黑体;*/
+	/*text-shadow: 3px 2px 5px #ffffff;*/
+}
+
+/*.head2 {
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(image/top_middle.jpg);
+	background-repeat: repeat-x;
+	width: 100%;
+	height: 110px;
+	cursor: default;
+}
+
+.head3 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(image/top_right.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	width: 100%;
+	height: 110px;
+	cursor: default;
+}*/
+
+.dialog {
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	width: 900px;
+	height: 600px;
+	margin-top: -300px;
+	margin-left: -450px;
+	border: 1px solid #008CEE;
+	border-radius: 5px 5px 0 0;
+	/*box-shadow: 2px 2px 3px #d5d5d5;*/
+}
+
+.bdialog {
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	width: 900px;
+	height: 600px;
+	margin-top: -300px;
+	margin-left: -450px;
+	border: 1px solid #008CEE;
+	border-radius: 5px 5px 0 0;
+	font-size: 16px;
+	font-weight: bold;
+	overflow: hidden;
+	/*box-shadow: 2px 2px 3px #d5d5d5;*/
+}
+
+.fdialog {
+	position: absolute;
+	z-index: 1;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	box-shadow: 2px 2px 3px #d5d5d5;
+}
+
+.sdialog {
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	width: 320px;
+	height: 316px;
+	margin-top: -158px;
+	margin-left: -160px;
+	background-image: url(image/loading.gif);
+	background-size: 100% 100%;
+	border-radius: 10px;
+}
+
+.leftdialogsclose {
+	position: absolute;
+	width: 20px;
+	top: 110px;
+	left: 0px;
+	overflow: hidden;
+}
+
+.leftdialogsclose .inner {
+	display: none;
+}
+
+.leftdialogs {
+	position: absolute;
+	width: 320px;
+	top: 50px;
+	bottom: 0;
+	margin: auto;
+	left: 0px;
+	transition: .8s;
+	/*overflow: hidden;*/
+}
+
+.leftdialogs .inner {
+	width: 320px;
+	height: 100%;
+	overflow: hidden;
+	/*overflow-y: scroll;
+	overflow-x: hidden;*/
+	/*background-color: #c2e9ff;*/
+	background-color: white;
+}
+
+.leftdialogs .inner2 {
+	width: 350px;
+	margin-bottom: 30px;
+	height: auto;
+}
+
+.leftdialogs .datatable {
+	width: 320px;
+	height: auto;
+	float: left;
+}
+
+.leftdialogs .datatable .datatableHead{
+	width: 320px;
+	height: 40px;
+	background-color: #008CEE;
+	color: white;
+	/*width: 320px;
+	height: auto;
+	float: left;*/
+}
+
+.leftdialogs .datatable .datatableHead td {
+	text-indent: 1em;
+}
+
+.leftdialogs .datatable>tbody {
+	position: relative;
+}
+
+#tab0inner {
+	/*width: 333px;*/
+	position: absolute;
+	top: 40px;
+	bottom: 0;
+	padding-bottom: 40px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+.bar {
+	/*background-image: url(image/bar.png);
+    background-repeat: repeat-x;*/
+   	width: 40px;
+	position: absolute;
+	right: -40px;
+	top: 45px;
+}
+.bar > div {
+	width: 40px;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 0 5px 5px 0;
+	border: 1px solid #008CEE;
+	font-size: 16px;
+	background-color: white;
+	color: #008CEE;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+.bar > div.baractive {
+	background-color: #008cee;
+	color: white;
+}
+
+.leftdialogs .datatable th {
+	height: 40px;
+	font-size: 16px;
+	width: 130px;
+	cursor: pointer;
+}
+
+.leftdialogs .datatable th.unactive {
+	color: #DCDCFF;
+}
+
+.leftdialogs .datatable th.unactive:hover {
+	color: White;
+}
+
+.leftdialogs .datatable th.active {
+	color: Black;
+	font-size: 16px;
+	text-shadow: 1px 1px 1px #ffffff;
+}
+
+.leftdialogs .datatable th div {
+	display: block;
+	width: 100%;
+	height: 40px;
+	/*margin-top: 5px;
+    background-image: url(image/barbt.png);*/
+	background-color: white;
+	line-height: 40px;
+	text-align: center;
+	color: #008CEE;
+}
+
+.leftdialogs .datatable th.active div {
+	line-height: 40px;
+}
+
+.leftdialogs .datatable select {
+	width: 90%;
+	margin-top: 5px;
+	font-size: 16px;
+	/*border-color: #0592e2;
+    background-color: #f9fdff;*/
+	border-color: lightgray;
+	background-color: white;
+	border-radius: 5px;
+	padding: 2px 5px;
+	cursor: pointer;
+}
+
+.leftdialogs .datatable select:focus {
+	box-shadow: 0 0 1px 1px #008CEE;
+}
+
+.leftdialogs .datatable select option {
+	background-color: #F7F7F7;
+	font-size: 16px;
+}
+
+
+/*.leftdialogs .datatable select option:nth-child(even)
+{
+    background-color: #f2faff;
+}*/
+
+.leftdialogs .showlevel {
+	width: 90%;
+}
+
+.leftdialogs .showlevel .showleveltb {
+	float: left;
+}
+
+.leftdialogs .showlevel .showleveltb input {
+	cursor: pointer;
+}
+
+.leftdialogs .showlevel .showleveltb label {
+	cursor: pointer;
+	color: #3388ff;
+}
+
+.leftdialogs .datatable .pasttimeclass {
+	margin-top: 5px;
+	width: 90%;
+	border-top: 1px solid #d3d3d3;
+}
+
+.leftdialogs .datatable .pasttimeclass th {
+	text-align: left;
+	font-size: 110%;
+	width: 95px;
+	cursor: default;
+}
+
+.leftdialogs .datatable .pasttimeclass td {
+	font-size: 110%;
+}
+
+.leftdialogs .datatable .parttitle {
+	border-top: 1px solid #d3d3d3;
+	padding-top: 5px;
+	width: 90%;
+	text-align: left;
+	font-size: 110%;
+	font-weight: bold;
+	cursor: default;
+}
+
+.leftdialogs .datatable .statisticsclass {
+	margin-top: 5px;
+	width: 90%;
+	border-bottom: 1px solid #D3D3D3;
+	padding-bottom: 10px;
+}
+
+.leftdialogs .datatable .statisticsclass table {
+	width: 100%;
+	border-color: #eee;
+}
+
+.leftdialogs .datatable .statisticsclass th {
+	width: 30%;
+	text-align: center;
+	font-size: 110%;
+	padding: 2px 2px 2px 2px;
+	cursor: text;
+}
+
+.leftdialogs .datatable .statisticsclass th.area {
+	width: 10%;
+}
+
+.leftdialogs .datatable .statisticsclass td {
+	text-align: center;
+	font-size: 110%;
+	padding: 2px 2px 2px 2px;
+}
+
+.leftdialogs .datatable .abstract {
+	margin-top: 25px;
+	width: 90%;
+	border-top: 1px solid #d3d3d3;
+}
+
+.leftdialogs .datatable .abstract th {
+	width: 90px;
+}
+
+.leftdialogs .datatable .abstract img {
+	margin-left: -30px;
+	margin-right: 5px;
+	width: 40px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.leftdialogs .datatable .abstract th {
+	cursor: default;
+	text-align: left;
+	font-size: 120%;
+}
+
+.leftdialogs .datatable .abstract td {
+	text-align: left;
+	font-size: 16px;
+	text-indent: 2em;
+}
+
+.leftdialogs .datatable .tl {
+	margin-top: 5px;
+	width: 90%;
+}
+
+.leftdialogs .datatable .list {}
+
+.leftdialogs .datatable .list .listtitle {
+	/*background-image: url(image/listtitle.png);*/
+	height: 40px;
+	cursor: pointer;
+	display: block;
+}
+
+.leftdialogs .datatable .list .listtitle p {
+	padding: 0 20px;
+	border-bottom: 1px solid lightgray;
+	/*padding-top: 7px;*/
+	margin: 0;
+	/*color: #008CEE;*/
+	color: black;
+	background-color: white;
+	width: auto;
+	height: 39px;
+	line-height: 40px;
+	font-size: 18px;
+	/*font-weight: bold;*/
+	/*text-shadow: 1px 1px 1px #333333;*/
+}
+
+.leftdialogs .datatable .list .listtitle:hover p {
+	background-color: #008CEE;
+	color: white;
+}
+
+.leftdialogs .datatable .list .town {
+	display: none;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.leftdialogs .datatable .list .town li {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.leftdialogs .datatable .list .town .townname {
+	/*background-image: url(image/tname.png);*/
+	background-color: #f7f7f7;
+	color: #484848;
+	margin: 0;
+	padding: 0;
+	height: 35px;
+	cursor: pointer;
+}
+
+.leftdialogs .datatable .list .town .townname p {
+	padding-left: 30px;
+	/*padding-top: 5px;*/
+	margin: 0;
+	/*color: White;*/
+	font-size: 16px;
+	/*font-weight: bold;*/
+	height: 35px;
+	line-height: 35px;
+	/*text-shadow: 1px 1px 1px #333333;*/
+}
+
+.leftdialogs .datatable .list .town .townname:hover p {
+	/*padding-left: 32px;
+	padding-top: 3px;
+	font-size: 123%;*/
+	background-color: #008CEE;
+	color: white;
+}
+
+.leftdialogs .datatable .list .town ul {
+	display: none;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.leftdialogs .datatable .list .town ul li {
+	cursor: pointer;
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 35px;
+	/*background-image: url(image/listli.png);*/
+	background-color: #f7f7f7;
+	color: #484848;
+}
+
+.leftdialogs .datatable .list .town ul li p {
+	font-size: 14px;
+	/*font-weight: bold;*/
+	margin: 0px;
+	padding-left: 40px;
+	/*padding-top: 1px;*/
+	height: 35px;
+	line-height: 35px;
+}
+
+.leftdialogs .datatable .list .town ul li:hover p {
+	background-color: #008CEE;
+	color: white;
+}
+
+.videoBtn {
+	width: 60px;
+	background-color: #008CEE;
+	border-radius: 5px;
+	padding: 2px;
+	cursor: pointer;
+}
+.videoBtn:hover {
+	background-color: #0383dd;
+}
+
+.videoBtn > #videoBtnImg {
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+	margin-right: 0;
+	margin-top: -2px;
+}
+
+.videoBtn > div {
+	display: inline-block;
+	text-indent: 0;
+	color: white;
+	vertical-align: middle;
+	margin-top: -6px;
+}
+
+.datatable .list .listactive .town {
+	display: block;
+}
+
+.datatable .list .listactive .town .activetarget {
+	display: block;
+}
+
+
+/*.leftdialogs .switch
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 20px;
+    height: 100%;
+}*/
+
+.switchbt {
+	cursor: pointer;
+	position: absolute;
+	/*background-image: url(image/switchup.png);*/
+	/*background-position: bottom;*/
+	top: 0px;
+	right: -40px;
+	background-color: white;
+	height: 38px;
+	width: 38px;
+	border-radius: 0 5px 5px 0;
+	border: 1px solid #eee;
+	/*-moz-opacity: 0.9;*/
+	/*Firefox私有*/
+	/*opacity: 0.9;
+	filter: Alpha(opacity=90);*/
+	/* IE8 以及更早的浏览器 */
+}
+.switchbt > img {
+	width: 100%;
+	height: 100%;
+}
+
+.leftdialogsclose .switch .switchbt {
+	margin-top: 0px;
+	top: 0px;
+	background-position: top;
+}
+
+.timebarclass {
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	width: 800px;
+	height: 50px;
+	margin-left: -200px;
+	background-color: #008CEE;
+	border-radius: 5px 5px 0 0;
+	/*background-image: url(image/tbl.png);
+	background-position: left top;
+	background-repeat: no-repeat;*/
+}
+
+.timebarmiddle {
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	width: 784px;
+	height: 50px;
+	margin-left: -192px;
+	background-image: url(image/tbm.png);
+	background-position: left top;
+	background-repeat: repeat-x;
+}
+
+.timebarright {
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	width: 800px;
+	height: 50px;
+	margin-left: -200px;
+	background-image: url(image/tbr.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+.timebarclass .timebt {
+	margin-left: 5px;
+	margin-top: 15px;
+	float: left;
+	width: 160px;
+}
+
+.timebarclass .timebt div {
+	width: 30px;
+	height: 30px;
+	margin-left: 2px;
+	display: inline-block;
+	background-image: url(image/tbpause.png);
+	background-position: bottom;
+}
+
+.timebarclass .timebt .tbplay {
+	background-position: top;
+}
+
+.timebarclass .timebt img {
+	height: 30px;
+	width: 30px;
+	margin-left: 2px;
+}
+
+.timebarclass .timebarjump {
+	margin-top: 15px;
+	float: right;
+	margin-right: 10px;
+	width: 120px;
+	color: White;
+}
+
+.timebarclass .timebarjump img {
+	height: 30px;
+	width: 30px;
+	margin-left: 5px;
+}
+
+.timebarclass .timebarjump input.text {
+	height: 20px;
+	width: 30px;
+	padding: 0;
+}
+
+.timebarclass .timebarbg {
+	float: left;
+	margin-top: 25px;
+	height: 10px;
+	width: 500px;
+	background-color: Blue;
+}
+
+.timebarclass .timebarcurrent {
+	height: 100%;
+	width: 0px;
+	background-color: Yellow;
+}
+
+.tbtransparent {
+	-moz-opacity: 0.7;
+	/*Firefox私有*/
+	opacity: 0.7;
+	filter: Alpha(opacity=70);
+	/* IE8 以及更早的浏览器 */
+}
+
+.tbtransparent:hover {
+	-moz-opacity: 0.9;
+	/*Firefox私有*/
+	opacity: 0.9;
+	filter: Alpha(opacity=90);
+	/* IE8 以及更早的浏览器 */
+}
+
+.tool {
+	/*background-color: #a9dafe;*/
+	background-color: white;
+	color: #008CEE;
+	position: absolute;
+	right: 20px;
+	top: 130px;
+	width: auto;
+	height: 35px;
+	border-radius: 5px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	/*background-image: url(image/toolbar.png);*/
+}
+
+.toolbt {
+	float: left;
+	width: 80px;
+	height: 35px;
+	cursor: pointer;
+}
+
+.toolbt .btim {
+	width: 30px;
+}
+
+.toolbt img {
+	margin-left: 10px;
+	height: 20px;
+	width: 20px;
+	border: 0;
+}
+
+.toolbt .bttext {
+	padding-left: 5px;
+}
+
+.border {
+	float: left;
+	width: 1px;
+	height: 25px;
+	margin-top: 5px;
+	background-color: #eeeeff;
+}
+
+.flyline {
+	position: absolute;
+	top: 170px;
+	right: 20px;
+	width: 242px;
+	background-color: #F7F7F7;
+	/*background-image: url(image/flybar.png);*/
+	/*background-color: #b5dffe;
+	background-repeat: no-repeat;*/
+}
+
+.flyline .flylinebar {
+	background-color: #008CEE;
+	height: 25px;
+}
+
+.flyline .flylinebar .flylinebartext {
+	padding-left: 10px;
+	padding-top: 1px;
+	color: White;
+	/*font-family: "SimHei", 黑体;*/
+	font-size: 16px;
+	/*text-shadow: 2px 1px 1px #cccccc;*/
+}
+
+.flyline .toolboxclosebt {
+	float: right;
+	height: 20px;
+	width: 20px;
+	margin-right: 10px;
+	margin-top: 2px;
+	cursor: pointer;
+}
+
+.flyline .flycontrolbar {
+	margin-top: 5px;
+	width: 90%;
+	height: 1px;
+	/*background-color: #ccccff;*/
+	background-color: #008CEE;
+}
+
+.flyline .flytimecontrol img {
+	margin-left: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 20px;
+	width: 20px;
+	border: 0;
+	cursor: pointer;
+}
+
+.flyline .flytimecontrol div {
+	display: inline-block;
+	margin-left: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 20px;
+	width: 20px;
+	border: 0;
+	background-image: url(image/fly_play.png);
+}
+
+.flyline .flytimecontrol div.playstyle {
+	cursor: pointer;
+	background-position: top;
+}
+
+.flyline .flytimecontrol div.playstyle2 {
+	cursor: pointer;
+	background-position: bottom;
+}
+
+.flyline img.last {
+	margin-right: 10px;
+}
+
+.flyline .linelist {
+	height: 30px;
+	margin-top: 5px;
+	padding-left: 10px;
+	overflow: visible;
+	line-height: 25px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.flyline .linelist span {
+	display: inline-block;
+	height: 24px;
+	width: 80px;
+	cursor: default;
+}
+
+.flyline .linelist table {
+	position: relative;
+	margin-left: 86px;
+	margin-top: 2px;
+	width: 138px;
+	z-index: 1;
+}
+
+.flyline .linelist table td {
+	background-color: #f7f7f7;
+}
+.flyline .linelist table td:hover {
+	background-color: #008CEE;	
+	color: white;
+}
+
+.flyline .linelist table td p {
+	margin: 0;
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	height: 26px;
+	width: 100%;
+	cursor: pointer;
+	box-sizing: border-box;
+	line-height: 26px;
+}
+
+.flyline .linelist table .flylinebar {
+	width: 100%;
+	height: 1px;
+	/*background-color: #ccccff;*/
+	background-color: lightgray;
+}
+
+.flyline .linelist .linelisthead {
+	display: inline-block;
+	background-image: url(image/fly_down.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+    background-color: white;
+	height: 22px;
+	width: 138px;
+	margin-top: 3px;
+	/*background-color: #DCECFF;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #72d9ff;*/
+	cursor: pointer;
+}
+.flyline .linelist .linelisthead p {
+	margin: 0;
+	padding-left: 5px;
+	border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+
+.locationlist {
+	width: 100px;
+	height: auto;
+	position: absolute;
+	top: 166px;
+	right: 160px;
+	/*background-color: #c3e1f7;*/
+	
+	/*border-style: solid;
+	border-left-width: 2px;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	border-top-width: 0px;
+	border-color: #A4C6F7;*/
+}
+
+.locationlist tr {
+	background-color: #F7F7F7;
+}
+
+.locationlist tr:hover {
+	background-color: #008CEE;
+	color: white;
+}
+
+.locationlist p {
+	margin: 0;
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	cursor: pointer;
+	/*box-sizing: border-box;*/
+}
+
+.toollistborder {
+	width: 80%;
+	height: 1px;
+	background-color: #ddddff;
+}
+
+.help {
+	position: absolute;
+	top: 170px;
+	right: 20px;
+	width: 242px;
+	/*background-image: url(image/flybar.png);
+	background-color: #b5dffe;
+	background-repeat: no-repeat;*/
+	background-color: white;
+}
+
+.help .helpbar {
+	background-color: #008CEE;
+	height: 25px;
+}
+
+.help .helpbar .helpbartext {
+	padding-left: 10px;
+	padding-top: 1px;
+	color: White;
+	/*font-family: "SimHei", 黑体;*/
+	font-size: 16px;
+	/*text-shadow: 2px 1px 1px #cccccc;*/
+}
+
+.help .toolboxclosebt {
+	float: right;
+	height: 20px;
+	width: 20px;
+	margin-right: 10px;
+	margin-top: 2px;
+	cursor: pointer;
+}
+
+.help .helptext p {
+	margin: 0px 10px 5px 5px;
+	text-align: left;
+}
+
+.help .helptext1 p {
+	/*margin: 10px 10px 5px 5px;*/
+	margin: 5px;
+	text-align: left;
+}

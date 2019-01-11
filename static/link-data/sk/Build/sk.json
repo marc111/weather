@@ -1,0 +1,14 @@
+{
+"companyName": "DefaultCompany",
+"productName": "shuiku",
+"dataUrl": "sk.data.unityweb",
+"asmCodeUrl": "sk.asm.code.unityweb",
+"asmMemoryUrl": "sk.asm.memory.unityweb",
+"asmFrameworkUrl": "sk.asm.framework.unityweb",
+"TOTAL_MEMORY": 536870912,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"dataUrl": "must-revalidate"}
+}

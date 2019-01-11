@@ -1,0 +1,77 @@
+﻿body
+{
+    margin: 0 0 0 0;
+    width: 100%;
+    background-color:Black;
+    overflow: hidden;
+}
+.close
+{
+    display:none;
+}
+div
+{
+    width: 100%;
+    height: 35px;
+    overflow: hidden;
+    line-height: 35px;
+    /*background-image: url(image/dtb.png);
+    background-size: 100% 100%;*/
+   background-color: #008CEE;
+   color: white;
+}
+.unbar
+{
+    -moz-opacity: 0.5; /*Firefox私有*/
+    opacity: 0.5;
+    filter: Alpha(opacity=5); /* IE8 以及更早的浏览器 */
+    position:absolute;
+ background-image:none;
+}
+.unbar:hover
+{
+    -moz-opacity: 0.8; /*Firefox私有*/
+    opacity: 0.8;
+    filter: Alpha(opacity=80); /* IE8 以及更早的浏览器 */
+    background-color:Black;
+}
+.topbarClose
+{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 7px;
+   color: white;
+    margin-right: 10px;
+    float: right;
+    cursor: pointer;
+}
+img
+{
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+    margin-right: 10px;
+    float: right;
+    cursor: pointer;
+}
+p
+{
+    display: inline-block;
+    margin: 0;
+    padding-left: 20px;
+    padding-top: 2px;
+    font-size: 150%;
+    font-weight: bold;
+    color: White;
+    text-shadow: 1px 1px 1px #333333;
+}
+
+.videodiv
+{
+    height:465px;
+    width:100%
+}
