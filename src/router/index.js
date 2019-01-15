@@ -9,6 +9,7 @@ import serviceRouter from './service'
 import tornadoRouter from './tornado'
 import affairsRouter from './affairs'
 import popularizeRouter from './popularize'
+import lightningRouter from './lightning'
 
 
 
@@ -68,6 +69,11 @@ const router = new Router({
     name: 'popularize',
     component: article,
     children: popularizeRouter
+  },{
+    path: '/lightning',
+    name: 'lightning',
+    component: article,
+    children: lightningRouter
   }]
 })
 

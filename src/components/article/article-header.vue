@@ -189,6 +189,13 @@ export default {
             name: 'news',
             title: '气象科普'
           }
+        ],
+        lightning:[
+           {
+            path: '/lightning/online',
+            name: 'online',
+            title: '在线办事'
+          }
         ]
       }
     }

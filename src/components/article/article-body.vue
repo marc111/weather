@@ -211,6 +211,15 @@ export default {
             icon: require('./img/content-nav/kp_1.png'),
             iconCurrent: require('./img/content-nav/kp_1_2.png')
           }
+        ],
+        lightning: [
+          {
+            path: '/lightning/online',
+            name: 'online',
+            title: '在线办事',
+            icon: require('./img/content-nav/L8_2.png'),
+            iconCurrent: require('./img/content-nav/L8_2_2.png')
+          }
         ]
       }
     }
