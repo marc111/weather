@@ -1,19 +1,22 @@
 <template>
-  <div class="12313">
-    123123
+  <div class="forecast-weather-report">
+    <router-view :path="path" :contentName="name" />
   </div>
 </template>
 <script>
-// 天气预报
 
 export default {
-
+  data(){
+    return {
+      path:'/forecast/weatherReport',
+      name:'天气报告'
+    }
+  }
+ 
 }
 </script>
-
 <style lang="scss" scoped>
-.forecast {
+.forecast-weather-report {
   width: 100%;
 }
 </style>
-

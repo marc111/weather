@@ -28,6 +28,12 @@ const weatherVideo = () =>
 const traffic = () =>
   import ('components/article/forecast/traffic')
 
+const listPage = () =>
+  import ('components/article/common-component/listPage')
+
+const contentPage = () =>
+  import ('components/article/common-component/contentPage')
+
 
 export default [{
     path: '/forecast',
@@ -61,11 +67,51 @@ export default [{
   }, {
     path: 'weatherReport',
     name: 'weatherReport',
-    component: weatherReport
+    component: weatherReport,
+    children: [{
+      path: '/forecast/weatherReport',
+      redirect: '/forecast/weatherReport/page/1'
+    }, {
+      path: 'page/:page',
+      name: 'weather_Report_page',
+      component: listPage,
+      children: [{
+        path: '/forecast/weatherReport/page',
+        redirect: '/forecast/weatherReport/page/1'
+      }]
+    }, {
+      path: 'content/:id',
+      name: 'weather_Report_content',
+      component: contentPage,
+      children: [{
+        path: '/forecast/weatherReport/content',
+        redirect: '/forecast/weatherReport/page/1'
+      }]
+    }]
   }, {
     path: 'weatherNews',
     name: 'weatherNews',
-    component: weatherNews
+    component: weatherNews,
+    children: [{
+      path: '/forecast/weatherNews',
+      redirect: '/forecast/weatherNews/page/1'
+    }, {
+      path: 'page/:page',
+      name: 'weather_news_page',
+      component: listPage,
+      children: [{
+        path: '/forecast/weatherNews/page',
+        redirect: '/forecast/weatherNews/page/1'
+      }]
+    }, {
+      path: 'content/:id',
+      name: 'weather_news_content',
+      component: contentPage,
+      children: [{
+        path: '/forecast/weatherNews/content',
+        redirect: '/forecast/weatherNews/page/1'
+      }]
+    }]
   }, {
     path: 'weatherVideo',
     name: 'weatherVideo',

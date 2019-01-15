@@ -1,19 +1,22 @@
 <template>
-  <div class="empty">testff444f</div>
+  <div class="service-notice">
+    <router-view :path="path" :contentName="name" list-type="notice"/>
+  </div>
 </template>
 <script>
 
 export default {
-  
+  data(){
+    return {
+      path:'/service/notice',
+      name:'档案公报'
+    }
+  }
+ 
 }
 </script>
 <style lang="scss" scoped>
-  .empty{
-    width: 100%;
-    height: 630px;
-    line-height: 630px;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-  }
+.service-notice {
+  width: 100%;
+}
 </style>

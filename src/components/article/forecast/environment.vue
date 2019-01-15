@@ -77,7 +77,6 @@ export default {
         this.time = this.environmentData[0].formatTime
       }
     });
-    console.log(this)
   }
 }
 </script>
