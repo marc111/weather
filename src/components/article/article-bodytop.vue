@@ -38,10 +38,10 @@
 import myScroll from 'common/js/scroll'
 
 export default {
-  mounted() {
+  mounted () {
     myScroll.upScroll("news-list", "-32px", 3200)
   },
-  data() {
+  data () {
     return {
       searchForm: {
         keyword: ''
@@ -62,12 +62,12 @@ export default {
     }
   },
   methods: {
-    search(e) {
-      e.preventDefault();
+    search (e) {
+      e.preventDefault()
       alert('搜索:' + this.searchForm.keyword)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

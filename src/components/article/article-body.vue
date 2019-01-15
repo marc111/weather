@@ -20,16 +20,16 @@ export default {
   components: {
     articleContentNav
   },
-  mounted() {
+  mounted () {
     this.current = this.$router.history.current.matched[1].name
   },
   watch: {
-    $route(to, from) {
+    $route (to, from) {
       this.current = this.$router.history.current.matched[1].name
     }
   },
   computed: {
-    navList() {
+    navList () {
       return this.navData[this.parentPath]
     }
   },
@@ -100,7 +100,21 @@ export default {
             iconCurrent: require('./img/content-nav/L1_7_2.png')
           }
         ],
-        monitor: [],
+        monitor: [
+          {
+            name: 'cloud',
+            path: '/monitor/cloud',
+            title: '卫星云图',
+            icon: require('./img/content-nav/L1_7.png'),
+            iconCurrent: require('./img/content-nav/L1_7_2.png')
+          }, {
+            name: 'radar',
+            path: '/monitor/radar',
+            title: 'S波段雷达图',
+            icon: require('./img/content-nav/L1_7.png'),
+            iconCurrent: require('./img/content-nav/L1_7_2.png')
+          }
+        ],
         warning: [
           {
             path: '/warning/foshan',

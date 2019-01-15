@@ -9,8 +9,6 @@ import serviceRouter from './service'
 import tornadoRouter from './tornado'
 import affairsRouter from './affairs'
 
-
-
 Vue.use(Router)
 
 // 登录
@@ -19,7 +17,6 @@ const home = () =>
 
 const article = () =>
   import ('components/article/article')
-
 
 const router = new Router({
   routes: [{
@@ -41,7 +38,7 @@ const router = new Router({
     path: '/monitor',
     name: 'monitor',
     component: article,
-    // children: monitorRouter
+    children: monitorRouter
   }, {
     path: '/warning',
     name: 'warning',
@@ -64,6 +61,5 @@ const router = new Router({
     children: affairsRouter
   }]
 })
-
 
 export default router
