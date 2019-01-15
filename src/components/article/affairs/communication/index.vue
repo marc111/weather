@@ -1,6 +1,6 @@
 <template>
   <div class="affairs-communication">
-    <div class="nav-area">
+    <div v-if="$route.name != 'affairs_communication_research_content'" class="nav-area">
       <template v-for="(item,index) in navList">
         <router-link
           v-if="item.type=='content'"
@@ -17,8 +17,7 @@
         >{{item.title}}</a>
       </template>
     </div>
-    <router-view v-if="current=='research'" path="/affairs/research" list-type="public" content-name="网上调查" />
-    <router-view v-else />
+    <router-view />
   </div>
 </template>
 <script>
@@ -33,16 +32,12 @@ export default {
   },
   methods: {
     setCurrent(route) {
-      console.log(route)
       this.current = route.matched[2].name == 'affairs_communication_research' ? 'research' : 'suggestion'
     }
   },
   data() {
     return {
       current: 'research',
-      researchList:[
-
-      ],
       navList: [{
         type: 'content',
         name: 'research',
@@ -67,7 +62,6 @@ export default {
   box-sizing: border-box;
   .nav-area {
     height: 33px;
-    padding: 0 8px;
     box-sizing: border-box;
     .nav-button {
       width: 128px;

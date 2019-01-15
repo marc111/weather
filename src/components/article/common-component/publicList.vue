@@ -4,7 +4,7 @@
       <li
         v-for="(item,index) in list"
         :key="item.title + '-'+index"
-        class="list-box"
+        class="list-box clearfloat"
       >
         <router-link
           class="title"
@@ -22,6 +22,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+
 .list-area {
   width: 100%;
   li {

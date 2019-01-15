@@ -1,5 +1,5 @@
 <template>
-  <div class="tornado-news">
+  <div class="popularize-news">
     <router-view :path="path" :contentName="name" list-type="notice_img"/>
   </div>
 </template>
@@ -8,15 +8,15 @@
 export default {
   data(){
     return {
-      path:'/tornado/news',
-      name:'科普资讯'
+      path:'/popularize/news',
+      name:'气象科普'
     }
   }
  
 }
 </script>
 <style lang="scss" scoped>
-.tornado-news {
+.popularize-news {
   width: 100%;
 }
 </style>

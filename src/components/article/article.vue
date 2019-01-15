@@ -73,10 +73,12 @@ export default {
         path: '/affairs',
         name: 'affairs'
       },
+      {
+        title: '气象科普',
+        path: '/popularize',
+        name: 'popularize'
+      },
       //{
-      //   title: '气象科普',
-      //   path: 'popularize'
-      // },{
       //   title: '防雷减灾',
       //   path: 'lightning'
       // },

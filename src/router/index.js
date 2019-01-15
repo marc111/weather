@@ -8,6 +8,7 @@ import warningRouter from './warning'
 import serviceRouter from './service'
 import tornadoRouter from './tornado'
 import affairsRouter from './affairs'
+import popularizeRouter from './popularize'
 
 
 
@@ -62,6 +63,11 @@ const router = new Router({
     name: 'affairs',
     component: article,
     children: affairsRouter
+  },{
+    path: '/popularize',
+    name: 'popularize',
+    component: article,
+    children: popularizeRouter
   }]
 })
 

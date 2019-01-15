@@ -16,6 +16,11 @@
       :path="path"
       :carousel-list="carouselList"
     />
+     <notice-list-img
+      v-if="listType == 'notice_img'"
+      :list="currentList"
+      :path="path"
+    />
     <list
       v-else
       :list="currentList"
@@ -32,12 +37,13 @@
 <script>
 import list from '../common-component/list'
 import noticeList from '../common-component/noticeList'
+import noticeListImg from '../common-component/noticeList_img'
 import publicList from '../common-component/publicList'
 import publicListCarousel from '../common-component/publicList_carousel'
 import page from '../common-component/page'
 export default {
   props: ['path', 'content-name', 'list-type'],
-  components: { list, page, noticeList, publicList, publicListCarousel },
+  components: { list, page, noticeList, publicList, publicListCarousel ,noticeListImg},
   mounted() {
     let page = parseInt(this.$route.params.page)
     this.setPage(page)
@@ -103,7 +109,8 @@ export default {
           desc: this.contentName + '第' + page + '页文章' + item + '新闻提要',
           id: this.contentName + 'id-' + page + item,
           time: '2019/1/12 9:05:00',
-          views: 339
+          views: 339,
+          img:require('../img/2019143067.jpg')
         }
       })
     },

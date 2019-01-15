@@ -1,19 +1,22 @@
 <template>
-  <div class="empty">新闻</div>
+  <div class="affairs-news">
+    <router-view :path="path" :content-name="name" list-type="public" />
+  </div>
 </template>
 <script>
 
 export default {
-  
+  data(){
+    return {
+      path:'/affairs/news',
+      name:'气象新闻'
+    }
+  }
+ 
 }
 </script>
 <style lang="scss" scoped>
-  .empty{
-    width: 100%;
-    height: 630px;
-    line-height: 630px;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-  }
+.affairs-news {
+  width: 100%;
+}
 </style>
