@@ -1,5 +1,7 @@
 <template>
-  <div class="empty">交流</div>
+  <div class="affairs-communication-research">
+    <router-view />
+  </div>
 </template>
 <script>
 
@@ -17,3 +19,4 @@ export default {
     text-align: center;
   }
 </style>
+v

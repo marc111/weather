@@ -33,7 +33,8 @@ export default {
   },
   methods: {
     setCurrent(route) {
-      this.current = route.name == 'affairs_communication_research' ? 'research' : 'suggestion'
+      console.log(route)
+      this.current = route.matched[2].name == 'affairs_communication_research' ? 'research' : 'suggestion'
     }
   },
   data() {
