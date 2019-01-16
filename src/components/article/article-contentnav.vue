@@ -17,7 +17,7 @@
 <script>
 export default {
   props: ['current', 'nav-list']
-};
+}
 </script>
 
 <style lang="scss" scoped>

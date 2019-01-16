@@ -11,8 +11,6 @@ import affairsRouter from './affairs'
 import popularizeRouter from './popularize'
 import lightningRouter from './lightning'
 
-
-
 Vue.use(Router)
 
 // 登录
@@ -21,7 +19,6 @@ const home = () =>
 
 const article = () =>
   import ('components/article/article')
-
 
 const router = new Router({
   routes: [{
@@ -43,7 +40,7 @@ const router = new Router({
     path: '/monitor',
     name: 'monitor',
     component: article,
-    // children: monitorRouter
+    children: monitorRouter
   }, {
     path: '/warning',
     name: 'warning',
@@ -76,6 +73,5 @@ const router = new Router({
     children: lightningRouter
   }]
 })
-
 
 export default router

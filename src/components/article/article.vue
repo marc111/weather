@@ -49,11 +49,11 @@ export default {
         path: '/forecast',
         name: 'forecast'
       },
-      // {
-      //   title: '天气监测',
-      //   path: '/monitor',
-      //   name: 'monitor'
-      // }, 
+      {
+        title: '天气监测',
+        path: '/monitor',
+        name: 'monitor'
+      },
       {
         title: '应急预警',
         path: '/warning',
