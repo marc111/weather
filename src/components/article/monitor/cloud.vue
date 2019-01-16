@@ -2,7 +2,15 @@
   <div class="empty">
     <div class="bigcloud">
       <!-- 头部下拉暂停菜单 -->
-      <div class="cloudinput"></div>
+      <div class="cloudinput">
+        <Select v-model="model1" style="width:200px">
+            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.value }}</Option>
+        </Select>
+        <div class="leftbutton"><button>左边</button></div>
+        <div class="contentbutton"><button>暂停</button></div>
+        <div class="rightbutton"><button>右边</button></div>
+      </div>
+
       <!-- 轮播图 -->
       <div class="mycloud">
         <div class="header-slider">
@@ -52,24 +60,57 @@ export default {
   data () {
     return {
       mySwiper: '',
+      model1: '',
       imgArray: [
         {
+          value: 'New York1',
           imgurl: require('./img/meng01.png')
         }, {
+          value: 'New York2',
           imgurl: require('./img/meng02.png')
         }, {
+          value: 'New York3',
           imgurl: require('./img/meng03.png')
         }, {
+          value: 'New York4',
           imgurl: require('./img/meng04.png')
         }, {
+          value: 'New York5',
           imgurl: require('./img/meng05.png')
         }, {
+          value: 'New York6',
           imgurl: require('./img/meng06.png')
         }
       ],
       value2: 0,
       value: '',
-      imgdatetime: ''
+      imgdatetime: '',
+      cityList: [
+        {
+          value: 'New York1',
+          label: 'New York'
+        },
+        {
+          value: 'New York2',
+          label: 'London'
+        },
+        {
+          value: 'New York3',
+          label: 'Sydney'
+        },
+        {
+          value: 'New York4',
+          label: 'Ottawa'
+        },
+        {
+          value: 'New York5',
+          label: 'Paris'
+        },
+        {
+          value: 'New York6',
+          label: 'Canberra'
+        }
+      ]
     }
   },
   methods: {
@@ -129,6 +170,15 @@ export default {
       height: 40px;
       margin-bottom: 15px;
       background-color: red;
+      > .leftbutton {
+        display: inline-block;
+      }
+      > .contentbutton {
+        display: inline-block;
+      }
+      > .rightbutton {
+        display: inline-block;
+      }
     }
     > .mycloud {
       width: 100%;

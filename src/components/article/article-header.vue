@@ -110,7 +110,17 @@ export default {
             title: '道路交通预报'
           }
         ],
-        monitor: [],
+        monitor: [
+          {
+            path: '/monitor/awshou',
+            name: 'awshou',
+            title: '自动站'
+          }, {
+            path: '/monitor/radar',
+            name: 'radar',
+            title: 'S波段雷达图'
+          }
+        ],
         warning: [
           {
             path: '/warning/foshan',

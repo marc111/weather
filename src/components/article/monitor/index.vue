@@ -21,57 +21,65 @@ export default {
     return {
       current: '',
       list: [{
-        path: 'foshan',
+        path: 'awshou',
         title: '自动站',
+        name: 'awshou',
         icon: require('../img/content-nav/L3_1.png'),
         iconCurrent: require('../img/content-nav/L3_1_2.png')
       }, {
         path: 'province',
         title: '能见度',
+        name: 'province',
         icon: require('../img/content-nav/L3_1.png'),
         iconCurrent: require('../img/content-nav/L3_1_2.png')
       }, {
         path: 'meaning',
         title: '天气实景',
+        name: 'province',
         icon: require('../img/content-nav/L3_3.png'),
         iconCurrent: require('../img/content-nav/L3_3_2.png')
       }, {
         path: 'radar',
         title: 'S波段雷达图',
+        name: 'radar',
         icon: require('../img/content-nav/L3_2.png'),
         iconCurrent: require('../img/content-nav/L3_2_2.png')
       }, {
-        path: 'disaster',
+        path: 'xradar',
         title: 'X波段雷达图',
+        name: 'xradar',
         icon: require('../img/content-nav/L3_2.png'),
         iconCurrent: require('../img/content-nav/L3_2_2.png')
       }, {
         path: 'cloud',
         title: '卫星云图',
+        name: 'cloud',
         icon: require('../img/content-nav/L3_2.png'),
         iconCurrent: require('../img/content-nav/L3_2_2.png')
       }, {
         path: 'disaster',
         title: '台风路径图',
+        name: 'province',
         icon: require('../img/content-nav/L3_2.png'),
         iconCurrent: require('../img/content-nav/L3_2_2.png')
       }, {
         path: 'disaster',
         title: '地球此时',
+        name: 'province',
         icon: require('../img/content-nav/L3_2.png'),
         iconCurrent: require('../img/content-nav/L3_2_2.png')
       }, {
         path: 'disaster',
         title: 'T-Inp',
+        name: 'disaster',
         icon: require('../img/content-nav/L3_2.png'),
         iconCurrent: require('../img/content-nav/L3_2_2.png')
       }]
     }
   },
   mounted () {
-    console.log(this.$router)
     if (this.$router.history.current.name === "monitor") {
-      this.$router.replace('/article/monitor/cloud')
+      this.$router.replace('/article/monitor/awshou')
       return
     } else {
       this.current = this.$router.history.current.matched[2].name
@@ -79,7 +87,7 @@ export default {
   },
   beforeRouteUpdate (to, from, next) {
     if (to.name === "monitor") {
-      this.$router.replace('/article/monitor/cloud')
+      this.$router.replace('/article/monitor/awshou')
     } else {
       this.current = to.matched[2].name
       next()

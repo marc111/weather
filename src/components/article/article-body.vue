@@ -102,6 +102,12 @@ export default {
         ],
         monitor: [
           {
+            name: 'awshou',
+            path: '/monitor/awshou',
+            title: '自动站',
+            icon: require('./img/content-nav/L1_7.png'),
+            iconCurrent: require('./img/content-nav/L1_7_2.png')
+          }, {
             name: 'cloud',
             path: '/monitor/cloud',
             title: '卫星云图',
@@ -111,6 +117,12 @@ export default {
             name: 'radar',
             path: '/monitor/radar',
             title: 'S波段雷达图',
+            icon: require('./img/content-nav/L1_7.png'),
+            iconCurrent: require('./img/content-nav/L1_7_2.png')
+          }, {
+            name: 'xradar',
+            path: '/monitor/xradar',
+            title: 'X波段雷达图',
             icon: require('./img/content-nav/L1_7.png'),
             iconCurrent: require('./img/content-nav/L1_7_2.png')
           }

@@ -205,7 +205,7 @@ export default {
   > .contentfoshan {
     width: 100%;
     height: 100%;
-    // background-color: orange;
+    background-color: orange;
     > .left-foshan {
       width: 30%;
       height: 100%;

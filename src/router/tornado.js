@@ -14,7 +14,7 @@ export default [
   {
     path: '/tornado',
     redirect: '/tornado/introduce'
-}, {
+  }, {
     path: 'introduce',
     name: 'introduce',
     component: introduce
