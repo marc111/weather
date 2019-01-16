@@ -10,6 +10,9 @@ const communication = () =>
 const communicationSuggestion = () =>
   import ('components/article/affairs/communication/suggestion')
 
+const communicationResearch = () =>
+  import ('components/article/affairs/communication/research')
+
 const notice = () =>
   import ('components/article/affairs/notice')
 
@@ -18,8 +21,6 @@ const news = () =>
 
 const suggestion = () =>
   import ('components/article/affairs/suggestion')
-
-
 
 const listPage = () =>
   import ('components/article/common-component/listPage')
@@ -74,24 +75,85 @@ export default [{
     component: communication,
     children: [{
       path: '/affairs/communication',
-      redirect: '/affairs/communication/research'
+      redirect: '/affairs/communication/research/page/1'
     }, {
       path: 'research',
       name: 'affairs_communication_research',
-      component: listPage
+      component: communicationResearch,
+      children: [{
+        path: '/affairs/communication/research',
+        redirect: '/affairs/communication/research/page/1'
+      }, {
+        path: '/affairs/communication/research/page',
+        redirect: '/affairs/communication/research/page/1'
+      }, {
+        path: '/affairs/communication/research/content',
+        redirect: '/affairs/communication/research/page/1'
+      }, {
+        path: 'page/:page',
+        name: 'affairs_communication_research_page',
+        component: listPage
+      }, {
+        path: 'content/:id',
+        name: 'affairs_communication_research_content',
+        component: contentPage
+      }]
     }, {
-      path: 'suggestion',
+      path: 'suggestion/:page',
       name: 'affairs_communication_suggestion',
-      component: communicationSuggestion
+      component: communicationSuggestion,
+      children: [{
+        path: '/affairs/communication/suggestion',
+        redirect: '/affairs/communication/suggestion/1'
+      }, {
+        path: '/affairs/communication/suggestion/page',
+        redirect: '/affairs/communication/suggestion/1'
+      }]
     }]
   }, {
     path: 'notice',
     name: 'notice',
-    component: notice
+    component: notice,
+    children: [{
+      path: '/affairs/notice',
+      redirect: '/affairs/notice/page/1'
+    }, {
+      path: '/affairs/notice/page',
+      redirect: '/affairs/notice/page/1'
+    }, {
+      path: '/affairs/notice/content',
+      redirect: '/affairs/notice/page/1'
+    }, {
+      path: 'page/:page',
+      name: 'affairs_notice_page',
+      component: listPage
+    }, {
+      path: 'content/:id',
+      name: 'affairs_notice_content',
+      component: contentPage
+    }]
   }, {
     path: 'news',
     name: 'news',
-    component: news
+    component: news,
+    children: [{
+      path: '/affairs/news',
+      redirect: '/affairs/news/page/1'
+    }, {
+      path: '/affairs/news/page',
+      redirect: '/affairs/news/page/1'
+    }, {
+      path: '/affairs/news/content',
+      redirect: '/affairs/news/page/1'
+    }, {
+      path: 'page/:page',
+      name: 'affairs_news_page',
+      component: listPage
+    }, {
+      path: 'content/:id',
+      name: 'affairs_news_content',
+      component: contentPage
+    }]
   }, {
     path: 'suggestion',
     name: 'suggestion',

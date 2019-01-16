@@ -173,7 +173,7 @@ export default {
           }, {
             path: '/tornado/news',
             name: 'news',
-            title: '机构简介',
+            title: '科普咨讯',
             icon: require('./img/content-nav/L8_2.png'),
             iconCurrent: require('./img/content-nav/L8_2_2.png')
           }
@@ -215,6 +215,24 @@ export default {
             title: '党风廉政意见箱',
             icon: require('./img/content-nav/L4_2.png'),
             iconCurrent: require('./img/content-nav/L4_2_2.png')
+          }
+        ],
+        popularize: [
+          {
+            path: '/popularize/news',
+            name: 'news',
+            title: '气象科普',
+            icon: require('./img/content-nav/kp_1.png'),
+            iconCurrent: require('./img/content-nav/kp_1_2.png')
+          }
+        ],
+        lightning: [
+          {
+            path: '/lightning/online',
+            name: 'online',
+            title: '在线办事',
+            icon: require('./img/content-nav/L8_2.png'),
+            iconCurrent: require('./img/content-nav/L8_2_2.png')
           }
         ]
       }

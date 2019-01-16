@@ -73,13 +73,16 @@ export default {
         path: '/affairs',
         name: 'affairs'
       },
-      //{
-      //   title: '气象科普',
-      //   path: 'popularize'
-      // },{
-      //   title: '防雷减灾',
-      //   path: 'lightning'
-      // },
+      {
+        title: '气象科普',
+        path: '/popularize',
+        name: 'popularize'
+      },
+      {
+        title: '防雷减灾',
+        path: '/lightning',
+        name: 'lightning'
+      },
       {
         title: '龙卷研究',
         path: '/tornado',

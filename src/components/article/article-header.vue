@@ -153,7 +153,7 @@ export default {
           }, {
             path: '/tornado/news',
             name: 'news',
-            title: '机构简介'
+            title: '科普资讯'
           }
         ],
         affairs: [
@@ -181,6 +181,20 @@ export default {
             path: '/affairs/suggestion',
             name: 'suggestion',
             title: '党风廉政意见箱'
+          }
+        ],
+        popularize: [
+          {
+            path: '/popularize/news',
+            name: 'news',
+            title: '气象科普'
+          }
+        ],
+        lightning:[
+           {
+            path: '/lightning/online',
+            name: 'online',
+            title: '在线办事'
           }
         ]
       }

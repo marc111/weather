@@ -1,19 +1,22 @@
 <template>
-  <div class="empty">公告</div>
+  <div class="affairs-notice">
+    <router-view :path="path" :content-name="name" list-type="public" />
+  </div>
 </template>
 <script>
 
 export default {
-  
+  data(){
+    return {
+      path:'/affairs/notice',
+      name:'通知公告'
+    }
+  }
+ 
 }
 </script>
 <style lang="scss" scoped>
-  .empty{
-    width: 100%;
-    height: 630px;
-    line-height: 630px;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-  }
+.affairs-notice {
+  width: 100%;
+}
 </style>
