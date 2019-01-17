@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="forecast">
     <article-content-nav
       :list="list"
@@ -17,8 +17,8 @@ export default {
   components: {
     articleContentNav
   },
-  mounted() {
-    if (this.$router.history.current.name == "warning") {
+  mounted () {
+    if (this.$router.history.current.name === "warning") {
       this.$router.replace('/article/warning/foshan')
       return
     } else {
@@ -28,8 +28,8 @@ export default {
   // updated() {
   //   this.currentPath = this.$router.history.current.name
   // },
-  beforeRouteUpdate(to, from, next) {
-    if (to.name == "warning") {
+  beforeRouteUpdate (to, from, next) {
+    if (to.name === "warning") {
       this.$router.replace('/article/warning/foshan')
     } else {
       this.current = to.matched[2].name

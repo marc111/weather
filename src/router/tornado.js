@@ -10,11 +10,11 @@ const listPage = () =>
 const contentPage = () =>
   import ('components/article/common-component/contentPage')
 
-export default [{
+export default [
+  {
     path: '/tornado',
     redirect: '/tornado/introduce'
-  },
-  {
+}, {
     path: 'introduce',
     name: 'introduce',
     component: introduce

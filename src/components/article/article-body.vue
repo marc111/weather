@@ -29,12 +29,12 @@ export default {
     this.current = this.$router.history.current.matched[1].name
   },
   watch: {
-    $route(to, from) {
+    $route (to, from) {
       this.current = this.$router.history.current.matched[1].name
     }
   },
   computed: {
-    navList() {
+    navList () {
       return this.navData[this.parentPath]
     }
   },

@@ -95,11 +95,26 @@ const state = {
         }
       ]
     },
-    // {
-    //   title: '天气监测',
-    //   path: '/monitor',
-    //   name: 'monitor'
-    // }, 
+    {
+      title: '天气监测',
+      path: '/monitor',
+      name: 'monitor',
+      children:[
+        {
+          name: 'cloud',
+          path: '/monitor/cloud',
+          title: '卫星云图',
+          icon: require('components/article/img/content-nav/L1_7.png'),
+          iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
+        }, {
+          name: 'radar',
+          path: '/monitor/radar',
+          title: 'S波段雷达图',
+          icon: require('components/article/img/content-nav/L1_7.png'),
+          iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
+        }
+      ]
+    }, 
     {
       title: '应急预警',
       path: '/warning',
