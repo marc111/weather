@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<items>
+    <Connect type="_blank" name="雨量筒" url="/gcsbjsInfo.aspx?id=1957" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+	 <Connect type="_blank" name="闪电定位" url="/gcsbjsInfo.aspx?id=1948" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+	 <Connect type="_blank" name="深层地温" url="/gcsbjsInfo.aspx?id=1949" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+	 <Connect type="_blank" name="日照仪" url="/gcsbjsInfo.aspx?id=1950" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+	 <Connect type="_blank" name="百叶箱" url="/gcsbjsInfo.aspx?id=1951" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+	 <Connect type="_blank" name="风向风速仪" url="/gcsbjsInfo.aspx?id=1954" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+	 <Connect type="_blank" name="能见度仪" url="/gcsbjsInfo.aspx?id=1955" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+	 <Connect type="_blank" name="大气电场仪" url="/gcsbjsInfo.aspx?id=1956" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+	 <Connect type="_blank" name="风廓线" url="/gcsbjsInfo.aspx?id=1954" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+	 <Connect type="_blank" name="电场仪" url="/gcsbjsInfo.aspx?id=1956" >
+	   <title>
+			 <![CDATA[仪器介绍]]>
+		</title>
+	 </Connect>
+</items>

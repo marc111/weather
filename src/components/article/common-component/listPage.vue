@@ -17,7 +17,7 @@
       :carousel-list="carouselList"
     />
      <notice-list-img
-      v-if="listType == 'notice_img'"
+      v-else-if="listType == 'notice_img'"
       :list="currentList"
       :path="path"
     />

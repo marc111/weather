@@ -10,6 +10,7 @@ import tornadoRouter from './tornado'
 import affairsRouter from './affairs'
 import popularizeRouter from './popularize'
 import lightningRouter from './lightning'
+import interactionRouter from './interaction'
 
 
 
@@ -74,6 +75,11 @@ const router = new Router({
     name: 'lightning',
     component: article,
     children: lightningRouter
+  },{
+    path:'/interaction',
+    name:'interaction',
+    component:article,
+    children:interactionRouter
   }]
 })
 
