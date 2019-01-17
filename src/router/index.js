@@ -16,10 +16,10 @@ Vue.use(Router)
 
 // 登录
 const home = () =>
-  import ( /* webpackChunkName: 'login' */ 'components/home/home')
+  import('components/home/home')
 
 const article = () =>
-  import ('components/article/article')
+  import('components/article/article')
 
 const router = new Router({
   routes: [{

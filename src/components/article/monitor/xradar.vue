@@ -1,6 +1,6 @@
 <template>
   <div class="empty">
-    <div class="bigradar">
+    <div class="bigxradar">
       <!-- 头部标签 -->
       <div class="top-tab">
         <ul>
@@ -33,6 +33,8 @@ export default {
           name: '肇庆雷达'
         }, {
           name: '全国雷达图'
+        }, {
+          name: '南海雷达图'
         }
       ]
     }
@@ -44,7 +46,7 @@ export default {
 .empty {
   width: 100%;
   height: 700px;
-  > .bigradar {
+  > .bigxradar {
     width: 100%;
     height: 100%;
     // background-color: red;
