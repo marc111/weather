@@ -34,6 +34,7 @@ export default {
 
   },
   mounted() {
+    this.navList = this.$store.state.navList
     this.current = this.$router.history.current.matched[0].name
   },
   beforeRouteLeave(to, from, next) {
@@ -44,51 +45,7 @@ export default {
     return {
       current: '',
       current1: '',
-      navList: [{
-        title: '天气预报',
-        path: '/forecast',
-        name: 'forecast'
-      },
-      {
-        title: '天气监测',
-        path: '/monitor',
-        name: 'monitor'
-      },
-      {
-        title: '应急预警',
-        path: '/warning',
-        name: 'warning'
-      },
-      {
-        title: '气候服务',
-        path: '/service',
-        name: 'service'
-      },
-      //{
-      //   title: '天气互动',
-      //   path: 'interaction'
-      // },
-      {
-        title: '阳光政务',
-        path: '/affairs',
-        name: 'affairs'
-      },
-      {
-        title: '气象科普',
-        path: '/popularize',
-        name: 'popularize'
-      },
-      {
-        title: '防雷减灾',
-        path: '/lightning',
-        name: 'lightning'
-      },
-      {
-        title: '龙卷研究',
-        path: '/tornado',
-        name: 'tornado'
-      }
-      ]
+      navList:[]
     }
   }
 };

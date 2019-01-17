@@ -45,8 +45,8 @@
             >{{item.title}}</router-link>
             <ul class="children-list">
               <li
-                v-for="childItem in navData[item.name]"
-                :key="'child-'+childItem.name"
+                v-for="childItem in item.children"
+                :key="'child-'+childItem.path"
               >
                 <router-link
                   class="children-link"
@@ -63,153 +63,7 @@
 </template>
 <script>
 export default {
-  props: ['navList', 'current'],
-  data() {
-    return {
-      navData: {
-        forecast: [
-          {
-            path: '/forecast/refine',
-            name: 'refine',
-            title: '精细化预报'
-          }, {
-            path: '/forecast/town',
-            name: 'town',
-            title: '乡镇天气预报'
-          }, {
-            path: '/forecast/scenicSpot',
-            name: 'scenicSpot',
-            title: '景区预报'
-          }, {
-            path: '/forecast/local',
-            name: 'local',
-            title: '本地预报'
-          }, {
-            name: 'internal',
-            path: '/forecast/internal',
-            title: '国内七日预报'
-          }, {
-            name: 'environment',
-            path: '/forecast/environment',
-            title: '环境气象'
-          }, {
-            name: 'weatherReport',
-            path: '/forecast/weatherReport',
-            title: '天气报告'
-          }, {
-            name: 'weatherNews',
-            path: '/forecast/weatherNews',
-            title: '天气消息'
-          }, {
-            name: 'weatherVideo',
-            path: '/forecast/weatherVideo',
-            title: '天气视频'
-          }, {
-            name: 'traffic',
-            path: '/forecast/traffic',
-            title: '道路交通预报'
-          }
-        ],
-        monitor: [
-          {
-            path: '/monitor/awshou',
-            name: 'awshou',
-            title: '自动站'
-          }, {
-            path: '/monitor/radar',
-            name: 'radar',
-            title: 'S波段雷达图'
-          }
-        ],
-        warning: [
-          {
-            path: '/warning/foshan',
-            name: 'foshan',
-            title: '佛山气象预警'
-          }, {
-            path: '/warning/province',
-            name: 'province',
-            title: '全省气象预警'
-          }, {
-            path: '/warning/meaning',
-            name: 'meaning',
-            title: '预警信号含义'
-          }, {
-            path: '/warning/disaster',
-            name: 'disaster',
-            title: '地质灾害预警'
-          }
-        ],
-        service: [
-          {
-            path: '/service/foshan',
-            name: 'foshan',
-            title: '佛山气候'
-          }, {
-            path: '/service/prediction',
-            name: 'prediction',
-            title: '生态气象预报'
-          }, {
-            path: '/service/notice',
-            name: 'notice',
-            title: '档案公报'
-          }
-        ],
-        tornado: [
-          {
-            path: '/tornado/introduce',
-            name: 'introduce',
-            title: '机构简介'
-          }, {
-            path: '/tornado/news',
-            name: 'news',
-            title: '科普资讯'
-          }
-        ],
-        affairs: [
-          {
-            path: '/affairs/public',
-            name: 'public',
-            title: '政务公开'
-          }, {
-            path: '/affairs/service',
-            name: 'service',
-            title: '办事服务'
-          }, {
-            path: '/affairs/communication',
-            name: 'communication',
-            title: '互动交流'
-          }, {
-            path: '/affairs/notice',
-            name: 'notice',
-            title: '通知公告'
-          }, {
-            path: '/affairs/news',
-            name: 'news',
-            title: '气象新闻'
-          }, {
-            path: '/affairs/suggestion',
-            name: 'suggestion',
-            title: '党风廉政意见箱'
-          }
-        ],
-        popularize: [
-          {
-            path: '/popularize/news',
-            name: 'news',
-            title: '气象科普'
-          }
-        ],
-        lightning:[
-           {
-            path: '/lightning/online',
-            name: 'online',
-            title: '在线办事'
-          }
-        ]
-      }
-    }
-  }
+  props: ['navList', 'current']
 };
 </script>
 
