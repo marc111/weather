@@ -15,7 +15,7 @@ const contentPage = () =>
 
 export default [{
   path: '/interaction',
-  redirect: '/interaction/message'
+  redirect: '/interaction/virtual'
 }, {
   path: '/interaction/virtual',
   name: 'virtual',

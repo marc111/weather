@@ -97,6 +97,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static_resource/images'),
         to: 'images',
         ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../static_resource/pub'),
+        to: 'pub',
+        ignore: ['.*']
       }
     ])
   ]
