@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="no-cache" http-equiv="Pragma">
+  <meta content="no-cache" http-equiv="Cache-Control">
+  <meta content="no-store" http-equiv="Cache-Control">
+  <meta content="0" http-equiv="Expires">
+  <link href="css/style.css" rel="stylesheet" />
+  <style type="text/css">
+    body {
+      background-color: #ffffff;
+    }
+    
+    ul {
+      list-style-type: none;
+      margin: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <table width="400" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+      <tr>
+        <td>
+          <div align="left" style="overflow:hidden;width:429px;height:800px" id="msg">
+            <div id="msg1">
+              <ul id="msgul" style="list-style:none;">
+                <li style="font-size:15px">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td width="80" valign="middle" align="center">
+                          <table cellspacing="0" cellpadding="0" border="0" class="indextqyjtablewai">
+                            <tbody>
+                              <tr>
+                                <td valign="middle" bgcolor="#FFFFFF" align="center">
+                                  <table width="76" cellspacing="0" cellpadding="0" border="0" class="indextqyjtable">
+                                    <tbody>
+                                      <tr>
+                                        <td width="76" valign="middle" align="center"><img width="60" height="50" src="images/warn/W0.gif"></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                        <td width="120" valign="middle" align="center">
+                          <table width="120" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                              <tr>
+                                <td width="120">
+                                  <table width="120" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                      <tr>
+                                        <td valign="middle" align="left" class="STYLE1">佛山市现时无天气预警信号发布</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td height="30" align="right" colspan="4"><a target="_blank" href="/warning.aspx"><span class="STYLE19C">......【详细预警】</span></a></td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    try {
+      var marqueesHeight = 100;
+      var stopscroll = false;
+
+      var scrollElem = document.getElementById("msg");
+      with(scrollElem) {
+        style.width = 290;
+        style.height = marqueesHeight;
+        style.overflow = 'hidden';
+        noWrap = true;
+      }
+
+      scrollElem.onmouseover = new Function('stopscroll = true');
+      scrollElem.onmouseout = new Function('stopscroll = false');
+
+      var preTop = 0;
+      var currentTop = 0;
+      var stoptime = 0;
+
+      //var leftElem = document.getElementById("msg1");
+      //scrollElem.appendChild(leftElem.cloneNode(true));
+      init_srolltext();
+
+    } catch (e) {}
+
+    function init_srolltext() {
+
+      scrollElem.scrollTop = 0;
+      setInterval('scrollUp()', 200); //速度
+    }
+
+    function scrollUp() {
+      if (stopscroll) return;
+      currentTop += 1;
+      if (currentTop == 12) {
+        stoptime += 1;
+        currentTop -= 1;
+        if (stoptime == 1) {
+          currentTop = 0;
+          stoptime = 0;
+        }
+      } else {
+        preTop = scrollElem.scrollTop;
+        scrollElem.scrollTop += 1;
+        if (preTop == scrollElem.scrollTop) {
+          scrollElem.scrollTop = 0;
+          scrollElem.scrollTop += 1;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,659 @@
+﻿@charset "utf-8";
+/* CSS Document */
+a {blr:e-xpression(this.onFocus=this.blur())} 
+area {blr:e-xpression(this.onFocus=this.blur())} 
+td img {display: block;border: 0; }
+.STYLE1head {
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: bold;
+	color: #969696;
+}
+
+.STYLE1a {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 20px;
+}
+.STYLE1 {
+	font-family: "宋体";
+	font-size: 12px;
+	
+}
+
+.STYLE1b {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.STYLE1z {
+	font-family: "宋体";
+	font-size: 13px;
+	font-weight: bold;
+	top: 5px;
+	position: relative;
+}
+
+.STYLE2 {	font-family: "黑体";
+	font-size: 14px;
+	color: #FFFFFF;
+}
+.STYLE2 {	font-family: "黑体";
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+.STYLE3 {	color: #9f9494;
+	font-size: 14px;
+	font-family: "黑体";
+}
+.STYLE3 {	color: #9f9494;
+	font-size: 14px;
+	font-family: "黑体";
+}
+
+.STYLE3A {	color: #929292;
+	font-size: 15px;
+	font-family: "黑体";
+}
+.STYLE4 {
+	color: #ff9900;
+	font-size:25px;
+	line-height: 25px;
+	font-weight: bold;
+}
+
+.STYLE6 {
+	color: #8d8d8d;
+	font-size: 12px;
+	font-weight: bold;
+}
+.STYLE6 {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.STYLE7 {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 20px;
+}
+.STYLE7 {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 20px;
+}
+.STYLEc8 {color: #8d8d8d; line-height: 20px; font-size: 12px; }
+.STYLE8 {color: #8d8d8d; line-height: 20px; font-size: 12px; }
+.STYLE8 {color: #8d8d8d; line-height: 20px; font-size: 12px; }
+
+.STYLE10 {font-size: 12px; font-weight: bold; color: #8d8d8d; }
+.STYLE10 {font-size: 12px; font-weight: bold; color: #8d8d8d; }
+
+.STYLE12 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+}
+.STYLE12 {font-family: "宋体"; font-size: 12px; font-weight: bold; }
+
+.STYLE14 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	text-decoration: underline;
+}
+.STYLE14 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	text-decoration: underline;
+}
+
+.STYLE16 {color: #999999}
+.STYLE16 {color: #999999}
+a:link {
+	color: #a2a2a2;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #a2a2a2;
+}
+a:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+body {
+	margin-top: 0px;
+	background-color: #D2D3D4;
+}
+.STYLE19 {
+	font-family: "黑体";
+	font-size: 16px;
+	color: #990000;
+	top: auto;
+	right: auto;
+	line-height: 30px;
+}
+.STYLE19write {
+	font-family: hiragino sans gb,microsoft yahei;;
+	font-size: 14px;
+	color: #FFCC00;
+	font-weight:bold;
+	top: auto;
+	right: auto;
+}
+.STYLE19 {
+	font-family: "黑体";
+	font-size: 16px;
+	color: #990000;
+	top: auto;
+	right: auto;
+	line-height: 30px;
+}
+
+.STYLE20 {
+	font-family: "黑体";
+	font-size: 14px;
+	color: #666666;
+}
+.STYLE20 {
+	font-family: "黑体";
+	font-size: 14px;
+	color: #666666;
+}
+
+.STYLE22 {color: #A2A2A2}
+.STYLE22 {color: #A2A2A2}
+
+.STYLE23 {
+	font-size: 14px;
+	font-weight: bold;	
+	line-height:200%;
+}
+
+.STYLE24 {	
+	font-size: 12px;
+	line-height:200%;
+}
+
+.STYLE25 {	
+	FONT-SIZE: 14px;
+	COLOR: #790000;
+	TEXT-DECORATION: none;
+	font-weight: bold;
+	line-height:200%;
+}
+.STYLE26 {	
+	font-size: 14px;
+	line-height:18px;;
+}
+.indextable1 {
+	width: 228px;
+	background-color: #f0f2f1;
+	padding: 0px;
+	border: 1px solid #dfdede;
+	color: #FFFFFF;
+}
+.indextd1 {
+	width: 228px;
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+	color: #FFFFFF;
+}
+.indextd1a {
+	background-color: #FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #e0e1e1;
+	border-right-color: #e0e1e1;
+	border-bottom-color: #e0e1e1;
+	border-left-color: #e0e1e1;
+}
+.indextable1tqsp {
+	width: 220px;
+	background-color: #f0f2f1;
+	padding: 0px;
+	border: 1px solid #e0e1e1;
+}
+.indextd1tqsp {
+	width: 228px;
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+	color: #FFFFFF;
+}
+.STYLE20A {
+	font-family: "黑体";
+	font-size: 15px;
+	color: #000000;
+}
+.tqyb1 {
+	color: #000000;
+	font-size: 14px;
+	font-family: "宋体";
+	line-height: 20px;	
+	text-indent: 24px;
+}
+.tqyb2 {
+	color: #000000;
+	font-size: 14px;
+	font-family: "黑体";
+	line-height: 20px;
+	text-indent: 0pt;
+}
+.tqyb3 {
+	color: #000000;
+	font-size: 14px;
+	font-family: "黑体";
+	line-height: 20px;
+	text-indent: 16pt;
+	text-align: right;
+}
+
+/*--------------以下为表格边框兼容firefox部分--------------*/
+
+/*main页栏目表格外框 */
+.indexlinktable {
+	background-color: #e9e9e9;
+	padding: 0px;
+	border: 1px solid #dfdede;
+}
+
+/*main页栏目表格外框 */
+.maintable {
+	background-color: #f0f2f1;
+	padding: 0px;
+	border: 1px solid #dfdede;
+}
+
+/*main页栏目表格内框 */
+.maintd {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+/*main页栏目表格外框灰，底色白 （天气预报，现时天气）*/
+.maintablebai {
+	background-color: #FFFFFF;
+	padding: 0px;
+	border: 1px solid #e0e1e1;
+}
+
+/*main页栏目表格外框灰，底色白 （天气预报，现时天气）*/
+.maintablehui {
+	background-color: #f8f9f9;
+	padding: 0px;
+	border: 1px solid #e0e1e1;
+}
+
+/*main页 天气视频栏*/
+.maintqsptable {
+	background-color: #e5e5e5;
+	padding: 0px;
+	border: 1px solid #e0e1e1;
+}
+
+/*main页 天气视频栏*/
+.maintqsptd {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+/*main页 分网站栏*/
+.mainfwztd {
+	padding: 0px;
+	background:#e9e9e9;
+	border: 1px solid #FFFFFF;
+}
+
+
+/*main页 天气与你栏*/
+.maintqyntable {
+	background-color: #edf1f2;
+	padding: 0px;
+	border: 1px solid #e0e1e1;
+}
+
+/*main页 天气与你栏*/
+.maintqyntd {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+/*main页 天气预报内页头部*/
+.maintqybheadtable {
+	background-color: #eceeed;
+	padding: 0px;
+	border: 1px solid #dfdede;
+}
+
+/*main页 天气与你栏*/
+.maintqybheadtd {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+/*分页 台风内页表格框*/
+.tftable {
+	background-color: #e9e9e9;
+	padding: 0px;
+	border: 1px solid #dfdede;
+}
+
+/*分页 台风内页表格框*//
+.tftd {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+
+.maintable1tqsp {
+	background-color: #f0f2f1;
+	padding: 0px;
+	border: 1px solid #e0e1e1;
+}
+
+.maintd1tqsp {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+.STYLE20A {
+	font-family: "黑体";
+	font-size: 15px;
+	color: #000000;
+}
+/*main页栏目表格外框-天气预报 */
+.maintabletqyb {
+	background-color: #f0f2f1;
+	padding: 0px;
+	border: 1px solid #dfdede;
+}
+
+/*main页栏目表格内框-天气预报 */
+.maintdtqyb {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+	background-color: #edf1f2;
+}
+
+/*全国天气预报浅色表格内框 */
+.qgtqybtd {
+	padding: 0px;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-right-color: #c8cac9;
+	border-bottom-color: #c8cac9;
+	background-color: #f0f2f1;
+	font-size: 12px;
+	color: #000000;
+}
+
+/*全国天气预报浅色表格内框 */
+.qgtqybtds {
+	padding: 0px;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-right-color: #c8cac9;
+	border-bottom-color: #c8cac9;
+	font-size: 12px;
+	color: #000000;
+}
+
+
+.STYLE19A {
+	font-family: hiragino sans gb,microsoft yahei;
+	font-size: 13px;
+	color: #000000;
+	top: auto;
+	right: auto;
+	line-height: normal;
+}
+
+.STYLE19At {
+	font-family: hiragino sans gb,microsoft yahei;
+	font-size: 13px;
+	color: #FFFFFF;
+	top: auto;
+	right: auto;
+	line-height: normal;
+}
+
+.STYLE19A1 {
+	font-family: "黑体";
+	font-size: 14px;
+	color: #999a9a;
+	top: auto;
+	right: auto;
+	line-height: normal;
+}
+
+.STYLE19A2 {
+	font-family: "黑体";
+	font-size: 14px;
+	color: #545252;
+	top: auto;
+	right: auto;
+	line-height: normal;
+}
+
+.STYLE19Aline {
+	font-family: "黑体";
+	font-size: 14px;
+	color: #999a9a;
+	top: auto;
+	right: auto;
+	line-height: normal;
+	text-decoration: underline;
+}
+
+.STYLE19B {
+	font-family: "黑体";
+	font-size: 15px;
+	color: #990000;
+	top: auto;
+	right: auto;
+	line-height: normal;
+}
+.STYLE19BB {
+	font-family: hiragino sans gb,microsoft yahei;
+	font-size: 14px;
+	color: #000000;
+	top: auto;
+	right: auto;
+	line-height: 23px;
+	font-weight: bold;
+	background-color:#FFCC00;
+}
+
+.STYLE19C {
+	font-family: "黑体";
+	font-size: 14px;
+	color: #000000;
+	top: auto;
+	right: auto;
+	line-height: normal;
+}
+.STYLE19C {
+	font-family: "黑体";
+	font-size: 14px;
+	color: #000000;
+	top: auto;
+	right: auto;
+	line-height: normal;
+	background-color:#ECEEED;
+}
+
+.STYLE1h {
+	font-family: "宋体";
+	font-size: 14px;
+	line-height: 20px;
+}
+
+
+/*waring页 天气预警栏*/
+.waringtb1 {
+	background-color: #e5e5e5;
+	padding: 0px;
+	border: 1px solid #d0d0d0;
+}
+
+.waringtd1 {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+.waringtb2 {
+	background-color: #f3f3f3;
+	padding: 0px;
+	border: 1px solid #cecece;
+}
+
+
+.waringtd2 {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+.waringtb3 {
+	background-color: #efefef;
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+
+.waringtd3 {
+	padding: 0px;
+	border: 1px solid #e7e7e7;
+}
+
+.waringtb4 {
+	background-color: #e8e6e7;
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+
+.waringtd4 {
+	padding: 0px;
+	border: 1px solid #d8d4d3;
+}
+
+.waringtb5 {
+	background-color: #e8e6e7;
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+
+.waringtd5 {
+	padding: 0px;
+	border: 1px solid #d8d4d3;
+}
+
+.waringtb6 {
+	background-color: #eceeed;
+	padding: 0px;
+	border: 1px solid #dfdede;
+}
+
+
+.waringtd6 {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+/*友情链接列表宽度*/
+.select
+{ 
+    width:   200px; 
+}
+
+
+/*mian天气预警内框 */
+.indextqyjtable {
+	padding: 0px;
+	border: 5px solid #ebebeb;
+}
+
+/*mian天气预警外框 */
+.indextqyjtablewai {
+	padding: 0px;
+	border: 5px solid #ffffff;
+}
+
+.font {
+	font-family: "宋体";
+	font-size: 12px;
+
+	font-style. normal;
+	color: #FFFFFF;
+	line-height: 20px;
+	font-weight: bold;
+}
+
+.font1 {
+	font-family: "宋体";
+	font-size: 12px;
+	text-indent: 24px;
+	font-style. normal;
+	color: #FFFFFF;
+	line-height: 20px;
+	font-weight: bold;
+}
+
+.font2 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style. normal;
+	color: #FFFFFF;
+	line-height: 25px;
+	text-indent: 24px;
+	font-weight: bold;
+}
+
+.tqcjtb {
+	padding: 0px;
+	border: 1px solid #d1d1d1;
+}
+
+.tqcjtd {
+	background-color: #ebeded;
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+.tqcjtb1 {
+	padding: 0px;
+	border: 1px solid #FFFFFF;
+}
+
+.tqcjtd1 {
+	background-color: #FFFFFF;
+	padding: 0px;
+	border: 2px solid #ebeded;
+}

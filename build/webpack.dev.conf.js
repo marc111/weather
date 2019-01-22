@@ -87,6 +87,26 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static_resource/360'),
         to: '360',
         ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../static_resource/plugin'),
+        to: 'plugin',
+        ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../static_resource/images'),
+        to: 'images',
+        ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../static_resource/pub'),
+        to: 'pub',
+        ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../static_resource/request_file'),
+        to: 'request_file',
+        ignore: ['.*']
       }
     ])
   ]

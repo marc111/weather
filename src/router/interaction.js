@@ -10,10 +10,12 @@ const share = () =>
 const data = () =>
   import ('components/article/interaction/data')
 
+const contentPage = () =>
+  import ('components/article/common-component/contentPage')
 
 export default [{
   path: '/interaction',
-  redirect: '/interaction/message'
+  redirect: '/interaction/virtual'
 }, {
   path: '/interaction/virtual',
   name: 'virtual',
@@ -21,7 +23,15 @@ export default [{
 }, {
   path: 'equipment',
   name: 'equipment',
-  component: equipment
+  component: equipment,
+  children: [{
+    path: '/interaction/equipment/detail',
+    redirect: '/interaction/equipment',
+  }, {
+    path: 'detail/:id',
+    name: 'interaction_equipment_detail',
+    component:contentPage
+  }]
 }, {
   path: 'share',
   name: 'share',
