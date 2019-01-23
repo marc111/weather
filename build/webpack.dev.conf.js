@@ -107,6 +107,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static_resource/request_file'),
         to: 'request_file',
         ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../static_resource/warning'),
+        to: 'warning',
+        ignore: ['.*']
       }
     ])
   ]
