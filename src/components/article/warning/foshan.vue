@@ -74,6 +74,7 @@
 <script>
 import echarts from 'echarts'
 import axios from 'axios'
+import jqury from 'jquery'
 export default {
   async mounted() {
 
@@ -106,9 +107,9 @@ export default {
       scrollDirection: '100%',
       scrollList: {},
       scrollMove: 'scrollMove',
-      mapSource: {},
       mapList: {},
-      mapCurrent: ''
+      mapCurrent: '',
+      mapPopup:[],
     }
   },
   methods: {
@@ -152,7 +153,7 @@ export default {
       data[2].forEach(item => {
         let { code, datetime, cn, name } = item
         !this.mapList[code] && (this.mapList[code] = [])
-        this.mapList[code].push({
+        const obj = {
           name: cn,
           value: code,
           data: {
@@ -160,28 +161,35 @@ export default {
             time: datetime,
             content: name
           }
-        })
+        }
+
+        if (code[1] > 0) {
+          obj.itemStyle = {
+            areaColor: this.colorMap[code[1]][0]
+          }
+        }
+        this.mapList[code].push(obj)
       })
 
       // 地图数据
-      this.mapSource = data[3]
+      echarts.registerMap('foshan', data[3]);
 
       !this.currentWarning && (this.currentWarning = data[1][0].code)
 
     },
-    setMap() {
-      echarts.registerMap('foshan', this.mapSource);
+    setMap(current) {
+
       let mapChart = echarts.init(document.getElementById('map-echarts'));
-      const mapData = this.mapList[this.currentWarning]
+      const mapData = this.mapList[current]
+
       const option = {
         tooltip: {
           trigger: 'item',
           showDelay: 0,
           transitionDuration: 0.2,
           position(point, params, dom, rect, size) {
-
+            console.log($(dom))
           },
-
         },
         series: [{
           type: 'map',
@@ -189,12 +197,12 @@ export default {
           zoom: 1.1,
           roam: true,
           itemStyle: {
-            areaColor: this.colorMap[0][0],
-            color: this.colorMap[0][1],
+            areaColor: this.colorMap[0][0]
           },
           label: {
             show: true,
-            fontSize: 10
+            fontSize: 10,
+            color: this.colorMap[(current ? current[1] : 0)][1]
           },
           data: mapData
         }]
@@ -249,7 +257,7 @@ export default {
     currentWarning() {
       this.$nextTick(() => {
         this.setScroll()
-        this.setMap()
+        this.setMap(this.currentWarning)
       })
     }
   }
