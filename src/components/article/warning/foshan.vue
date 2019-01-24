@@ -11,14 +11,14 @@
           class="scroll-inside"
           :style="{'left':scrollDirection}"
         >
-          <template v-if="scrollCurrent">
-            <template v-for="(item,index) in scrollList[scrollCurrent]">
+          <template v-if="currentWarning">
+            <template v-for="(item,index) in scrollList[currentWarning]">
               <div
-                :key="'scroll-'+scrollCurrent+'-'+index"
+                :key="'scroll-'+currentWarning+'-'+index"
                 class="scroll-box"
               >
                 <span>{{item.city}} {{item.time}} </span>
-                <img :src="'/images/warning/wa_fo/'+scrollCurrent+'.png'" />
+                <img :src="'/images/warning/wa_fo/'+currentWarning+'.png'" />
               </div>
             </template>
           </template>
@@ -50,15 +50,18 @@
               <template v-for="(item,index) in scrollList">
                 <span
                   :key="'map-nav-'+index"
-                  :class="['map-nav-button',{'current':scrollCurrent == index}]"
-                  @click="scrollSwitch(index)"
+                  :class="['map-nav-button',{'current':currentWarning == index}]"
+                  @click="currentSwitch(index)"
                 >
                   <img :src="'/images/warning/wa_fo/'+index+'.png'" />
                 </span>
               </template>
             </div>
           </div>
-          <div class="map-content"></div>
+          <div
+            class="map-content"
+            id="map-echarts"
+          ></div>
         </div>
         <div
           v-if="showStatus == 'list'"
@@ -69,6 +72,7 @@
   </div>
 </template>
 <script>
+import echarts from 'echarts'
 import axios from 'axios'
 export default {
   async mounted() {
@@ -90,10 +94,21 @@ export default {
         GDGM: '高明',
         BFFO: '禅城'
       },
-      scrollCurrent: '',
+      colorMap: [
+        ['#e7e7e7', '#333333'],
+        ['#ffffff', '#333333'],
+        ['#0f0feb', '#ffffff'],
+        ['#f5e82a', '#333333'],
+        ['#efa425', '#333333'],
+        ['#c30e21', '#ffffff'],
+      ],
+      currentWarning: '',
       scrollDirection: '100%',
       scrollList: {},
-      scrollMove: 'scrollMove'
+      scrollMove: 'scrollMove',
+      mapSource: {},
+      mapList: {},
+      mapCurrent: ''
     }
   },
   methods: {
@@ -104,7 +119,7 @@ export default {
         return res.data
       });
 
-      // 城市预警状态
+      // 区预警状态
       let cityStatus = axios.get('/warning/wa_fo_inforce.js').then(res => {
         return res.data
       });
@@ -114,13 +129,18 @@ export default {
         return res.data
       });
 
-      return Promise.all([currentStatus, cityStatus, townStatus])
+      // 佛山镇街geoJSON数据
+      let mapSource = axios.get('/map-source/area.js').then(res => {
+        return res.data;
+      })
+
+      return Promise.all([currentStatus, cityStatus, townStatus, mapSource])
     },
     setData(data) {
 
+      // 整理各区预警数据
       data[1].forEach(item => {
         let { code, station_code, datetime } = item
-        !this.scrollCurrent && (this.scrollCurrent = code)
         !this.scrollList[code] && (this.scrollList[code] = [])
         this.scrollList[code].push({
           city: this.cityMap[station_code],
@@ -128,24 +148,81 @@ export default {
         })
       })
 
+      // 整理镇街预警数据
+      data[2].forEach(item => {
+        let { code, datetime, cn, name } = item
+        !this.mapList[code] && (this.mapList[code] = [])
+        this.mapList[code].push({
+          name: cn,
+          value: code,
+          data: {
+            code,
+            time: datetime,
+            content: name
+          }
+        })
+      })
 
+      // 地图数据
+      this.mapSource = data[3]
 
-      console.log(this)
+      !this.currentWarning && (this.currentWarning = data[1][0].code)
+
     },
+    setMap() {
+      echarts.registerMap('foshan', this.mapSource);
+      let mapChart = echarts.init(document.getElementById('map-echarts'));
+      const mapData = this.mapList[this.currentWarning]
+      const option = {
+        tooltip: {
+          trigger: 'item',
+          showDelay: 0,
+          transitionDuration: 0.2,
+          position(point, params, dom, rect, size) {
+
+          },
+
+        },
+        series: [{
+          type: 'map',
+          map: 'foshan',
+          zoom: 1.1,
+          roam: true,
+          itemStyle: {
+            areaColor: this.colorMap[0][0],
+            color: this.colorMap[0][1],
+          },
+          label: {
+            show: true,
+            fontSize: 10
+          },
+          data: mapData
+        }]
+      }
+      mapChart.setOption(option);
+    },
+
+    // 切换地图模式和列表模式
     showSwitch(status) {
       this.showStatus != status && (this.showStatus = status)
     },
+
+    // 停止滚动
     stopScroll() {
       this.scrollMove && clearInterval(this.scrollMove)
     },
+
+    // 开始滚动
     startScroll() {
       this.setScroll()
     },
-    scrollSwitch(index) {
-      if (this.scrollCurrent != index) {
+
+    // 切换预警类型
+    currentSwitch(index) {
+      if (this.currentWarning != index) {
         clearInterval(this.scrollMove)
         this.scrollDirection = '100%'
-        this.scrollCurrent = index
+        this.currentWarning = index
       }
     },
     setScroll() {
@@ -169,9 +246,10 @@ export default {
     }
   },
   watch: {
-    scrollCurrent() {
+    currentWarning() {
       this.$nextTick(() => {
         this.setScroll()
+        this.setMap()
       })
     }
   }
@@ -243,12 +321,14 @@ export default {
     }
     .content-area {
       width: 100%;
+      height: 540px;
       .show-map {
         width: 100%;
         display: inline-block;
         .map-nav {
           width: 230px;
           display: inline-block;
+          vertical-align: top;
           .title {
             background: #025bc4;
             height: 24px;
@@ -283,6 +363,13 @@ export default {
               border-color: #ff6c00;
             }
           }
+        }
+        .map-content {
+          width: 680px;
+          height: 560px;
+          margin-left: 20px;
+          display: inline-block;
+          vertical-align: top;
         }
       }
     }
