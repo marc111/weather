@@ -58,15 +58,16 @@
               </template>
             </div>
           </div>
-          <div
-            class="map-content"
-            id="map-echarts"
-          ></div>
+          <div class="map-content">
+            <map-area :current-code="currentWarning" />
+          </div>
         </div>
         <div
           v-if="showStatus == 'list'"
           class="show-list"
-        ></div>
+        >
+          <list-area />
+        </div>
       </div>
     </div>
   </div>
@@ -75,7 +76,11 @@
 import echarts from 'echarts'
 import axios from 'axios'
 import jqury from 'jquery'
+import mapArea from './map'
+import listArea from './list'
+
 export default {
+  components: { mapArea, listArea },
   async mounted() {
 
     const dataSource = await this.getData()
@@ -95,21 +100,11 @@ export default {
         GDGM: '高明',
         BFFO: '禅城'
       },
-      colorMap: [
-        ['#e7e7e7', '#333333'],
-        ['#ffffff', '#333333'],
-        ['#0f0feb', '#ffffff'],
-        ['#f5e82a', '#333333'],
-        ['#efa425', '#333333'],
-        ['#c30e21', '#ffffff'],
-      ],
+      warningList: [],
       currentWarning: '',
       scrollDirection: '100%',
       scrollList: {},
-      scrollMove: 'scrollMove',
-      mapList: {},
-      mapCurrent: '',
-      mapPopup:[],
+      scrollMove: 'scrollMove'
     }
   },
   methods: {
@@ -125,17 +120,7 @@ export default {
         return res.data
       });
 
-      // 镇街预警状态
-      let townStatus = axios.get('/warning/wa_fotown_inforce_all.js').then(res => {
-        return res.data
-      });
-
-      // 佛山镇街geoJSON数据
-      let mapSource = axios.get('/map-source/area.js').then(res => {
-        return res.data;
-      })
-
-      return Promise.all([currentStatus, cityStatus, townStatus, mapSource])
+      return Promise.all([currentStatus, cityStatus])
     },
     setData(data) {
 
@@ -149,65 +134,8 @@ export default {
         })
       })
 
-      // 整理镇街预警数据
-      data[2].forEach(item => {
-        let { code, datetime, cn, name } = item
-        !this.mapList[code] && (this.mapList[code] = [])
-        const obj = {
-          name: cn,
-          value: code,
-          data: {
-            code,
-            time: datetime,
-            content: name
-          }
-        }
-
-        if (code[1] > 0) {
-          obj.itemStyle = {
-            areaColor: this.colorMap[code[1]][0]
-          }
-        }
-        this.mapList[code].push(obj)
-      })
-
-      // 地图数据
-      echarts.registerMap('foshan', data[3]);
-
       !this.currentWarning && (this.currentWarning = data[1][0].code)
 
-    },
-    setMap(current) {
-
-      let mapChart = echarts.init(document.getElementById('map-echarts'));
-      const mapData = this.mapList[current]
-
-      const option = {
-        tooltip: {
-          trigger: 'item',
-          showDelay: 0,
-          transitionDuration: 0.2,
-          position(point, params, dom, rect, size) {
-            console.log($(dom))
-          },
-        },
-        series: [{
-          type: 'map',
-          map: 'foshan',
-          zoom: 1.1,
-          roam: true,
-          itemStyle: {
-            areaColor: this.colorMap[0][0]
-          },
-          label: {
-            show: true,
-            fontSize: 10,
-            color: this.colorMap[(current ? current[1] : 0)][1]
-          },
-          data: mapData
-        }]
-      }
-      mapChart.setOption(option);
     },
 
     // 切换地图模式和列表模式
@@ -233,6 +161,8 @@ export default {
         this.currentWarning = index
       }
     },
+
+    // 设置滚动
     setScroll() {
       let el = document.getElementById("scroll-inside")
       let originDirection, targetDirection
@@ -257,7 +187,6 @@ export default {
     currentWarning() {
       this.$nextTick(() => {
         this.setScroll()
-        this.setMap(this.currentWarning)
       })
     }
   }
@@ -329,7 +258,6 @@ export default {
     }
     .content-area {
       width: 100%;
-      height: 540px;
       .show-map {
         width: 100%;
         display: inline-block;
@@ -374,11 +302,14 @@ export default {
         }
         .map-content {
           width: 680px;
-          height: 560px;
+          height: 540px;
           margin-left: 20px;
           display: inline-block;
           vertical-align: top;
         }
+      }
+      .show-list {
+        width: 100%;
       }
     }
   }

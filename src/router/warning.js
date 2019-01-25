@@ -1,5 +1,5 @@
 const foshan = () =>
-  import ('components/article/warning/foshan')
+  import ('components/article/warning/foshan/index')
 
 const province = () =>
   import ('components/article/warning/province')
