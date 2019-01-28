@@ -9,7 +9,7 @@
       </div>
       <!-- 雷达图内容 -->
       <div class="conteng-radar">
-        <foshan-radar />
+        <foshan-radar v-if="active===0"/>
       </div>
     </div>
   </div>
@@ -24,6 +24,7 @@ export default {
   },
   data () {
     return {
+      active: 0,
       toptabArray: [
         {
           name: '佛山镇街雷达图'

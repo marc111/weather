@@ -31,7 +31,7 @@
       </div>
       <!-- 底部说明文字 -->
       <div class="footercolud">
-        <img src="./img/title.png" alt="">
+        <!-- <img src="./img/title.png" alt=""> -->
         <!-- <span>说明:</span>
         <br>
         <p>云图图像上显示的时间是世界时,标题时间为北京时。</p>
@@ -64,22 +64,22 @@ export default {
       imgArray: [
         {
           value: 'New York1',
-          imgurl: require('./img/meng01.png')
+          // imgurl: require('./img/meng01.png')
         }, {
           value: 'New York2',
-          imgurl: require('./img/meng02.png')
+          // imgurl: require('./img/meng02.png')
         }, {
           value: 'New York3',
-          imgurl: require('./img/meng03.png')
+          // imgurl: require('./img/meng03.png')
         }, {
           value: 'New York4',
-          imgurl: require('./img/meng04.png')
+          // imgurl: require('./img/meng04.png')
         }, {
           value: 'New York5',
-          imgurl: require('./img/meng05.png')
+          // imgurl: require('./img/meng05.png')
         }, {
           value: 'New York6',
-          imgurl: require('./img/meng06.png')
+          // imgurl: require('./img/meng06.png')
         }
       ],
       value2: 0,

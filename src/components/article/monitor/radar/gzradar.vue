@@ -103,37 +103,37 @@ export default {
           imgurl: require('../img/meng01.png'),
           value: '2018.0.1'
         }, {
-          imgurl: require('../img/meng02.png'),
+          // imgurl: require('../img/meng02.png'),
           value: '2018.0.2'
         }, {
-          imgurl: require('../img/meng03.png'),
+          // imgurl: require('../img/meng03.png'),
           value: '2018.0.3'
         }, {
-          imgurl: require('../img/meng04.png'),
+          // imgurl: require('../img/meng04.png'),
           value: '2018.0.4'
         }, {
-          imgurl: require('../img/meng05.png'),
+          // imgurl: require('../img/meng05.png'),
           value: '2018.0.5'
         }, {
-          imgurl: require('../img/meng06.png'),
+          // imgurl: require('../img/meng06.png'),
           value: '2018.0.6'
         }, {
-          imgurl: require('../img/meng01.png'),
+          // imgurl: require('../img/meng01.png'),
           value: '2018.0.7'
         }, {
-          imgurl: require('../img/meng02.png'),
+          // imgurl: require('../img/meng02.png'),
           value: '2018.0.8'
         }, {
-          imgurl: require('../img/meng03.png'),
+          // imgurl: require('../img/meng03.png'),
           value: '2018.0.9'
         }, {
-          imgurl: require('../img/meng04.png'),
+          // imgurl: require('../img/meng04.png'),
           value: '2018.0.10'
         }, {
-          imgurl: require('../img/meng05.png'),
+          // imgurl: require('../img/meng05.png'),
           value: '2018.0.11'
         }, {
-          imgurl: require('../img/meng06.png'),
+          // imgurl: require('../img/meng06.png'),
           value: '2018.0.12'
         }
       ]
