@@ -19,7 +19,18 @@
                     :class="{'last':townIndex == item.town.length-1}"
                   >
                     <span>{{townItem.name}}</span>
-                    <template></template>
+                    <div class="warning-list">
+                      <span
+                        v-for="(warningItem,warningIndex) in warningData[item.code +townItem.code]"
+                        :key="'warning_img_'+index+'_'+townIndex+'_'+warningIndex"
+                        :class="{'last':warningIndex == warningData[item.code +townItem.code].length-1}"
+                      >
+                        <img
+                          v-if="warningItem"
+                          :src="'/images/warning/wa_fo/'+warningItem+'.png'"
+                        />
+                      </span>
+                    </div>
                   </div>
                 </template>
               </div>
@@ -31,68 +42,24 @@
   </div>
 </template>
 <script>
+import Vue from 'Vue'
 import axios from 'axios'
 export default {
   mounted() {
     this.getData().then(res => {
-
-      const data = this.areaData
-
       res.forEach(item => {
-
-        // let areaName = item.station_code.substr(0, 2)
-        // let townName = item.station_code.substr(2)
-        // let warningIndex = this.warningCode.indexOf(item.code[0])
-        // let areaIndex = this.areaIndex[areaName].index
-        // let townIndex = this.areaIndex[areaName].townIndex[townName]
-
-        // !data[areaIndex].town && (data[areaIndex].town = [])
-        // !data[areaIndex].town[townIndex] && (data[areaIndex].town[townIndex] = {})
-        // !data[areaIndex].town[townIndex].name && (data[areaIndex].town[townIndex].name = item.cn)
-        // !data[areaIndex].town[townIndex].list && (data[areaIndex].town[townIndex].list = ['', '', '', '', '', '', '', '', '', ''])
-        // data[areaIndex].town[townIndex].list[warningIndex] = item.code
-
+        let { station_code, code } = item
+        let warningIndex = this.warningCode.indexOf(item.code[0])
+        if (this.warningData[station_code]) {
+          Vue.set(this.warningData[station_code], warningIndex, code)
+        }
       })
-
-      // this.areaData = data
     })
   },
   data() {
     return {
       warningCN: ['台风', '暴雨', '高温', '寒冷', '大雾', '灰霾', '雷雨大风', '道路结冰', '冰雹', '森林火险'],
       warningCode: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
-      areaIndex: {
-        CC: {
-          index: 0,
-          townIndex: {
-            SW: 0, ZM: 1, ZC: 2, NZ: 3
-          }
-        },
-        NH: {
-          index: 1,
-          townIndex: {
-            LS: 0, XQ: 1, JJ: 2, DZ: 3, DL: 4, SS: 5, GC: 6
-          }
-        },
-        SD: {
-          index: 2,
-          townIndex: {
-            JA: 0, DL: 1, RG: 2, LL: 3, LJ: 4, CC: 5, XT: 6, LZ: 7, LC: 8, BJ: 9
-          }
-        },
-        SS: {
-          index: 3,
-          townIndex: {
-            YD: 0, DT: 1, LP: 2, BN: 3, NS: 4, XN: 5, LB: 6
-          }
-        },
-        GM: {
-          index: 4,
-          townIndex: {
-            YH: 0, GH: 1, MC: 2, HC: 3
-          }
-        },
-      },
       areaData: [
         {
           name: '禅城',
@@ -100,7 +67,7 @@ export default {
           town: [
             {
               name: '石湾',
-              code: 'SW'
+              code: 'SW',
             }, {
               name: '祖庙',
               code: 'ZM'
@@ -112,12 +79,151 @@ export default {
               code: 'NZ'
             }
           ]
+        },
+        {
+          name: '南海',
+          code: 'NH',
+          town: [
+            {
+              name: '里水',
+              code: 'LS',
+            }, {
+              name: '西樵',
+              code: 'XQ'
+            }, {
+              name: '九江',
+              code: 'JJ'
+            }, {
+              name: '丹灶',
+              code: 'DZ'
+            }, {
+              name: '大沥',
+              code: 'DL'
+            }, {
+              name: '狮山',
+              code: 'SS'
+            }, {
+              name: '桂城',
+              code: 'GC'
+            },
+          ]
+        }, {
+          name: '顺德',
+          code: 'SD',
+          town: [
+            {
+              name: '均安',
+              code: 'JA',
+            }, {
+              name: '大良',
+              code: 'DL'
+            }, {
+              name: '容桂',
+              code: 'RG'
+            }, {
+              name: '勒流',
+              code: 'LL'
+            }, {
+              name: '伦教',
+              code: 'LJ'
+            }, {
+              name: '陈村',
+              code: 'CC'
+            }, {
+              name: '杏坛',
+              code: 'XT'
+            }, {
+              name: '龙江',
+              code: 'LZ'
+            }, {
+              name: '乐从',
+              code: 'LC'
+            }, {
+              name: '北滘',
+              code: 'BJ'
+            }
+          ]
+        }, {
+          name: '三水',
+          code: 'SS',
+          town: [
+            {
+              name: '云东海',
+              code: 'YD',
+            }, {
+              name: '大塘',
+              code: 'DT'
+            }, {
+              name: '乐平',
+              code: 'LP'
+            }, {
+              name: '白坭',
+              code: 'BN'
+            }, {
+              name: '南山',
+              code: 'NS'
+            }, {
+              name: '西南',
+              code: 'XN'
+            }, {
+              name: '芦苞',
+              code: 'LB'
+            },
+          ]
+        }, {
+          name: '高明',
+          code: 'GM',
+          town: [
+            {
+              name: '杨和',
+              code: 'YH',
+            }, {
+              name: '更合',
+              code: 'GH'
+            }, {
+              name: '明城',
+              code: 'MC'
+            }, {
+              name: '荷城',
+              code: 'HC'
+            }
+          ]
         }
-        // { name: '南海', code: 'NH' },
-        // { name: '顺德', code: 'SD' },
-        // { name: '三水', code: 'SS' },
-        // { name: '高明', code: 'GM' }
-      ]
+      ],
+      warningData: {
+        CCSW: ['', '', '', '', '', '', '', '', '', ''],
+        CCZC: ['', '', '', '', '', '', '', '', '', ''],
+        CCNZ: ['', '', '', '', '', '', '', '', '', ''],
+        CCZM: ['', '', '', '', '', '', '', '', '', ''],
+        NHLS: ['', '', '', '', '', '', '', '', '', ''],
+        NHXQ: ['', '', '', '', '', '', '', '', '', ''],
+        NHDZ: ['', '', '', '', '', '', '', '', '', ''],
+        NHJJ: ['', '', '', '', '', '', '', '', '', ''],
+        NHDL: ['', '', '', '', '', '', '', '', '', ''],
+        NHSS: ['', '', '', '', '', '', '', '', '', ''],
+        NHGC: ['', '', '', '', '', '', '', '', '', ''],
+        SDJA: ['', '', '', '', '', '', '', '', '', ''],
+        SDDL: ['', '', '', '', '', '', '', '', '', ''],
+        SDRG: ['', '', '', '', '', '', '', '', '', ''],
+        SDLL: ['', '', '', '', '', '', '', '', '', ''],
+        SDLJ: ['', '', '', '', '', '', '', '', '', ''],
+        SDCC: ['', '', '', '', '', '', '', '', '', ''],
+        SDXT: ['', '', '', '', '', '', '', '', '', ''],
+        SDLZ: ['', '', '', '', '', '', '', '', '', ''],
+        SDLC: ['', '', '', '', '', '', '', '', '', ''],
+        SDBJ: ['', '', '', '', '', '', '', '', '', ''],
+        SSYD: ['', '', '', '', '', '', '', '', '', ''],
+        SSDT: ['', '', '', '', '', '', '', '', '', ''],
+        SSLP: ['', '', '', '', '', '', '', '', '', ''],
+        SSBN: ['', '', '', '', '', '', '', '', '', ''],
+        SSNS: ['', '', '', '', '', '', '', '', '', ''],
+        SSXN: ['', '', '', '', '', '', '', '', '', ''],
+        SSLB: ['', '', '', '', '', '', '', '', '', ''],
+        GMYH: ['', '', '', '', '', '', '', '', '', ''],
+        GMGH: ['', '', '', '', '', '', '', '', '', ''],
+        GMMC: ['', '', '', '', '', '', '', '', '', ''],
+        GMHC: ['', '', '', '', '', '', '', '', '', '']
+      }
     }
   },
   methods: {
@@ -126,7 +232,6 @@ export default {
       return axios.get('/warning/wa_fotown_inforce_all.js').then(res => {
         return res.data
       });
-
     }
   }
 }
@@ -199,13 +304,39 @@ export default {
             > div {
               margin-left: 2px;
               margin-bottom: 2px;
-              span {
+              font-size: 0;
+              > span {
+                width: 94px;
                 height: 50px;
                 line-height: 50px;
-                display: block;
+                display: inline-block;
+                vertical-align: middle;
                 font-size: 12px;
                 text-align: center;
                 background-color: #eeeeee;
+              }
+              .warning-list {
+                width: 798px;
+                height: 50px;
+                display: inline-block;
+                vertical-align: middle;
+                span {
+                  width: 79px;
+                  height: 50px;
+                  margin-left: 1px;
+                  display: block;
+                  float: left;
+                  background-color: #eeeeee;
+                  img {
+                    width: 50px;
+                    height: 40px;
+                    margin: 5px auto;
+                    display: block;
+                  }
+                }
+                .last {
+                  width: 77px;
+                }
               }
             }
           }
