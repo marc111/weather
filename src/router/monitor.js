@@ -2,17 +2,20 @@ const monitor = () =>
   import ('components/article/monitor/index')
 
 const cloud = () =>
-  import('components/article/monitor/cloud')
+  import ('components/article/monitor/cloud')
 
 const radar = () =>
-  import('components/article/monitor/radar')
+  import ('components/article/monitor/radar')
 
 const xradar = () =>
-  import('components/article/monitor/xradar')
+  import ('components/article/monitor/xradar')
 
 // 自动站
 const awshou = () =>
-  import('components/article/monitor/awshou')
+  import ('components/article/monitor/awshou')
+
+const tlnp = () =>
+  import ('components/article/monitor/tlnp/index')
 
 export default [{
   path: '/monitor',
@@ -33,4 +36,8 @@ export default [{
   path: 'awshou',
   name: 'awshou',
   component: awshou
+}, {
+  path: 'tlnp',
+  name: 'tlnp',
+  component:tlnp
 }]
