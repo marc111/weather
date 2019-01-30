@@ -318,6 +318,7 @@ export default function(target) {
     var A = false,
       E = [];
     if ($ == null || $.length < 4 || _ == null || _.length < 4) return null;
+    var pre_y
     var G = pre_y = Number.NEGATIVE_INFINITY;
     for (var H = 0, C = $.length; H < C - 2 && !A; H += 2) {
       var D = $.slice(H, H + 4);

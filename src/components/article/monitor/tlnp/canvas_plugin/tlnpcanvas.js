@@ -2,17 +2,7 @@ export default function(target) {
 
   var _ = {
       diagram_mode: "ema50",
-      default_settings: {
-        adding_left: 25,
-        padding_right: 25,
-        padding_top: 15,
-        padding_bottom: 15,
-        tmin: -85,
-        tmax: 40,
-        pmin: 50,
-        pmax: 1050,
-        dowithP: "ln"
-      },
+      default_settings: { padding_left: 25, padding_right: 25, padding_top: 15, padding_bottom: 15, tmin: -85, tmax: 40, pmin: 50, pmax: 1050, dowithP: "ln" },
       create: function($, A) {
         var _ = Object.create(this);
         _.ctx = $.getContext("2d");

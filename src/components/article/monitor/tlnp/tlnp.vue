@@ -1,10 +1,14 @@
 <template>
   <div
     class='monitor-tlnp-canvas'
-    :style="{'display':canvasId == 'tlnp'?'inline-block':'none'}"
+    :style="{'display':canvasId == 'canvas-tlnp'?'inline-block':'none'}"
   >
     <div class="canvas-area">
-      <canvas id="tlnp" ></canvas>
+      <canvas
+        id="canvas-tlnp"
+        width="744"
+        height="628"
+      ></canvas>
     </div>
     <div class="form-area">
       <div class="form-item">
@@ -14,7 +18,7 @@
             type="radio"
             name="stateCurve_orgin"
             value="lowest"
-            v-model="formData.stateCurve_orgin"
+            v-model="stateCurve_orgin"
             @change="stateCurveOrginChange"
           />
           <label>探空底层</label>
@@ -24,7 +28,7 @@
             type="radio"
             name="stateCurve_orgin"
             value="inversion_lid"
-            v-model="formData.stateCurve_orgin"
+            v-model="stateCurve_orgin"
             @change="stateCurveOrginChange"
           />
           <label>逆温层顶(如果有)</label>
@@ -34,7 +38,7 @@
             type="radio"
             name="stateCurve_orgin"
             value="surf"
-            v-model="formData.stateCurve_orgin"
+            v-model="stateCurve_orgin"
             @change="stateCurveOrginChange"
           />
           <label>地面(如果有)</label>
@@ -45,7 +49,7 @@
           <input
             type="checkbox"
             name="idx"
-            v-model="formData.idx"
+            v-model="idx"
             @change="idxChange"
           />
           <label>显示指数 </label>
@@ -93,22 +97,50 @@
   </div>
 </template>
 <script>
+
 export default {
-  props: ['station', 'bt', 'canvas-data', 'canvas-id', 'layer'],
-  data() {
-    return {
-      formData: {
-        idx: false,
-        stateCurve_orgin: 'lowest'
-      }
+  props: {
+    layer: String,
+    canvasId: String,
+    canvasTarget: {
+      type: Object,
+      default: null
     }
   },
+  data() {
+    return {
+      idx: false,
+      stateCurve_orgin: 'lowest',
+      tlnpTarget: null
+    }
+  },
+  
   methods: {
+
+    draw() {
+      const { target, dataMnt } = this.canvasTarget
+      const tlnpTarget = target.tmgram.tlnp("canvas-tlnp", dataMnt, { no_padding: false })
+      tlnpTarget.setOption({ diagram_mode: this.layer, plugin_opt: { StateCurve: { orgin: this.stateCurve_orgin }, Idx: { hide: !this.idx } } })
+      tlnpTarget.draw()
+    },
+
     stateCurveOrginChange() {
-      console.log(this)
+      this.canvasTarget && this.draw()
     },
     idxChange() {
-      console.log(this)
+      this.canvasTarget && this.draw()
+    }
+  },
+  watch: {
+    canvasTarget() {
+      this.$nextTick(() => {
+        this.canvasTarget && this.draw()
+      })
+    },
+    layer() {
+      this.$nextTick(() => {
+        this.canvasTarget && this.draw()
+      })
     }
   }
 }
@@ -128,8 +160,8 @@ export default {
     height: 628px;
     margin-right: 26px;
     canvas {
-      width: 744px;
-      height: 628px;
+      // width: 744px;
+      // height: 628px;
     }
   }
   .form-area {

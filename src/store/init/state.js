@@ -1,25 +1,7 @@
-import { responseModule } from 'common/js/module'
-const state = {
-  User: {},
-  Role: null,
-  RouterFrom: '',
-  active: {},
-  form_name: '',
-  Institution: [],
-  DepartReportInfo: {},
-  IsShow: '',
-  DepReportList: [],
-  ifCommand: false,
-  responseModule: responseModule,
-  SHUIKU: {},
-  ID: '',
-  NOTICEID: '',
-  MESSAGEID: '',
-  STATUS: '',
-  STTUS: '',
-  timeOut: '',
-  RESJUMPPATH: '',
-  navList: [{
+export default {
+  catalog: [],
+  status: false,
+  catalogData: [{
       title: '天气预报',
       path: '/forecast',
       name: 'forecast',
@@ -293,7 +275,5 @@ const state = {
         iconCurrent: require('components/article/img/content-nav/L8_2_2.png')
       }]
     }
-  ],
+  ]
 }
-
-export default state

@@ -17,7 +17,6 @@ export default function(target) {
     _reset: function(E) {
       E = E || {};
       E.plugin_opt = E.plugin_opt || {};
-      console.log(this.element)
       this._canvas = target.tmgram.Canvas.create(this.element, E || {});
       var A = this.pluginMnt = target.tmgram.PluginMnt(this._canvas, this.dataMnt),
         $ = E.plugins != null ? E.plugins : target.tmgram.PLUGIN_GROUP.STD;

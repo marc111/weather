@@ -244,6 +244,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import homeswiper from './home-swiper'
 import hometop from './home-top'
 import homenav from './home-nav'
@@ -462,7 +463,11 @@ export default {
       this.flag = flag
     }
   },
+  computed:{
+ 
+  },
   mounted () {
+    console.log(this.$store.dispatch('getInitData'))
     myScroll.upScroll("demo", "-36px", 3200)
     myScroll.upScroll("demo2", "-36px", 2000)
     this.$nextTick(() => {

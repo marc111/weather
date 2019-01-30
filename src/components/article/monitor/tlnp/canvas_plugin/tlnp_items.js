@@ -17,6 +17,7 @@ export default function(target) {
       var stateCurve_orgin = 'lowest' // 表单 stateCurve_orgin;
       var idxOn = false // 表单 idx;
       var tlnp = getTlnp(this.dataMnt);
+
       tlnp.setOption({ diagram_mode: mode, plugin_opt: { StateCurve: { orgin: stateCurve_orgin }, Idx: { hide: !idxOn } } });
       tlnp.draw();
       return

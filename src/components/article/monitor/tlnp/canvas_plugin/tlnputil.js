@@ -60,6 +60,7 @@ export default function(target) {
   function A(B, A, $) { return F(A, $, function($, A) { return B - _.thetase($, $, A) }) }
 
   function E(C, F, W) {
+    var i_el;
     var O = C[0],
       R = C[1],
       $ = D.mark2polyline(C, F),

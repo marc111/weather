@@ -144,3 +144,7 @@
 
 // // 自定义错误标识
 // export const ERR_CUSTOM = '2000'
+
+// 数据请求url
+export const request_root = 'http://10.0.1.184:8080'
+export const request_init = request_root + '/mpsp/web/website/content/9'
