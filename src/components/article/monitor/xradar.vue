@@ -4,12 +4,17 @@
       <!-- 头部标签 -->
       <div class="top-tab">
         <ul>
-          <li v-for="(item, index) in toptabArray" :key="item.index">{{item.name}}</li>
+          <li :class="[flag==0?'activestatus':'']" @click="changeshow(0)">佛山镇街雷达图</li>
+          <li :class="[flag==1?'activestatus':'']" @click="changeshow(1)">广州雷达</li>
+          <li :class="[flag==2?'activestatus':'']" @click="changeshow(2)">肇庆雷达</li>
+          <li :class="[flag==3?'activestatus':'']" @click="changeshow(3)">全国雷达图</li>
+          <li :class="[flag==4?'activestatus':'']" @click="changeshow(4)">南海雷达图</li>
         </ul>
       </div>
       <!-- 雷达图内容 -->
       <div class="conteng-radar">
-        <foshan-radar v-if="active===0"/>
+        <foshan-radar v-if="flag == 0"/>
+        <gz-radar v-if="flag == 1" />
       </div>
     </div>
   </div>
@@ -17,27 +22,22 @@
 
 <script>
 import FoshanRadar from './radar/foshanradar'
+import GzRadar from './radar/gzradar'
 
 export default {
   components: {
-    FoshanRadar
+    FoshanRadar,
+    GzRadar
   },
   data () {
     return {
       active: 0,
-      toptabArray: [
-        {
-          name: '佛山镇街雷达图'
-        }, {
-          name: '广州雷达'
-        }, {
-          name: '肇庆雷达'
-        }, {
-          name: '全国雷达图'
-        }, {
-          name: '南海雷达图'
-        }
-      ]
+      flag: 0
+    }
+  },
+  methods: {
+    changeshow (flag) {
+      this.flag = flag
     }
   }
 }
@@ -67,6 +67,10 @@ export default {
           cursor: pointer;
         }
         li:hover {
+          background-color: #123A7B;
+          color: #fff;
+        }
+        .activestatus {
           background-color: #123A7B;
           color: #fff;
         }

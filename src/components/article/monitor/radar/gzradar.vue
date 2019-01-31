@@ -37,10 +37,10 @@
                   <img :src="item.imgurl" alt="">
                 </div>
               </div>
-                <div class="swiper-pagination"></div>
                 <!-- <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div> -->
               </div>
+              <div class="swiper-pagination"></div>
             </div>
           </div>
         </div>
@@ -100,40 +100,40 @@ export default {
         }],
       imgArray: [
         {
-          imgurl: require('../img/meng01.png'),
+          imgurl: require('../img/nianhui1.png'),
           value: '2018.0.1'
         }, {
-          // imgurl: require('../img/meng02.png'),
+          imgurl: require('../img/nianhui2.png'),
           value: '2018.0.2'
         }, {
-          // imgurl: require('../img/meng03.png'),
+          imgurl: require('../img/nianhui3.png'),
           value: '2018.0.3'
         }, {
-          // imgurl: require('../img/meng04.png'),
+          imgurl: require('../img/nianhui4.png'),
           value: '2018.0.4'
         }, {
-          // imgurl: require('../img/meng05.png'),
+          imgurl: require('../img/nianhui5.png'),
           value: '2018.0.5'
         }, {
-          // imgurl: require('../img/meng06.png'),
+          imgurl: require('../img/nianhui6.png'),
           value: '2018.0.6'
         }, {
-          // imgurl: require('../img/meng01.png'),
+          imgurl: require('../img/nianhui1.png'),
           value: '2018.0.7'
         }, {
-          // imgurl: require('../img/meng02.png'),
+          imgurl: require('../img/nianhui3.png'),
           value: '2018.0.8'
         }, {
-          // imgurl: require('../img/meng03.png'),
+          imgurl: require('../img/nianhui3.png'),
           value: '2018.0.9'
         }, {
-          // imgurl: require('../img/meng04.png'),
+          imgurl: require('../img/nianhui4.png'),
           value: '2018.0.10'
         }, {
-          // imgurl: require('../img/meng05.png'),
+          imgurl: require('../img/nianhui5.png'),
           value: '2018.0.11'
         }, {
-          // imgurl: require('../img/meng06.png'),
+          imgurl: require('../img/nianhui7.png'),
           value: '2018.0.12'
         }
       ]
@@ -149,7 +149,8 @@ export default {
           el: '.swiper-pagination',
           renderBullet: function (index, className) {
             return '<span class="' + className + '">' + (index + 1) + '</span>'
-          }
+          },
+          clickable: true
         },
         autoplay: {
           // 可选选项，自动滑动
@@ -179,15 +180,16 @@ export default {
     autopalychange (val) {
       console.log(val)
       if (val === '加速3秒') {
-        this.mySwiper.autoplay.delay = 3000
+        // this.mySwiper.autoplay.delay = 3000
+        this.mySwiper.params.autoplay.delay = 3000
+        console.log(this.mySwiper, 22)
       } else if (val === '加速2秒') {
-        this.mySwiper.autoplay.delay = 2000
+        this.mySwiper.params.autoplay.delay = 2000
       } else if (val === '加速1秒') {
-        this.mySwiper.autoplay.delay = 1000
+        this.mySwiper.params.autoplay.delay = 1000
       } else if (val === '加速0.5秒') {
-        this.mySwiper.autoplay.delay = 500
+        this.mySwiper.params.autoplay.delay = 500
       }
-      console.log(this.mySwiper.autoplay.delay)
     }
   },
   mounted () {
@@ -205,7 +207,7 @@ export default {
   > .contentfoshan {
     width: 100%;
     height: 100%;
-    background-color: orange;
+    // background-color: orange;
     > .left-foshan {
       width: 30%;
       height: 100%;
@@ -257,7 +259,7 @@ export default {
       > .mycloud {
         width: 100%;
         height: 100%;
-        background-color: green;
+        // background-color: green;
       }
     }
   }
@@ -280,5 +282,11 @@ export default {
 .swiper-container .swiper-wrapper .swiper-slide > img {
   width: 100%;
   height: 544px;
+}
+
+.swiper-pagination {
+  position: relative !important;
+  left: -13px !important;
+  width: 306px;
 }
 </style>
