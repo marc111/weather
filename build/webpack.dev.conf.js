@@ -124,6 +124,24 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static_resource/dat'),
         to: 'dat',
         ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../static_resource/lib'),
+        to: 'lib',
+        ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../static_resource/tlnpdoc'),
+        to: 'tlnpdoc',
+        ignore: ['.*']
+      }, {
+        from: path.resolve(__dirname, '../static_resource/lib2011'),
+        to: 'lib2011',
+        ignore: ['.*']
+      }, {
+        from: path.resolve(__dirname, '../static_resource/sample'),
+        to: 'sample',
+        ignore: ['.*']
       }
     ])
   ]

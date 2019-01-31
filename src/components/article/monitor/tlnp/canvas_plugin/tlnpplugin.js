@@ -1293,7 +1293,7 @@ export default function(target) {
         try {
           var lfe = tmutil.lfc_el_eal(d4f.Tps, Ls, lcl.p);
           fill(d4f.Tps, Ls, lfe, thetase0);
-        } catch (e) {console.log(e)};
+        } catch (e) { console.log(e) };
         canv.draw_polyline(canv.toPx(Ls.map(function(v, i) { return i % 2 == 0 ? phy.t(v) : v; })), { strokeStyle: 'brown', lineWidth: 2 });
       }
       //填充能量区域
@@ -1770,9 +1770,8 @@ export default function(target) {
           num = ar[i][1],
           f = ar[i][2],
           unit = ar[i][3];
-        if (i > 0)
-          label += ","
-        if (label.length = 0 || label.charAt(label.length - 1) == ' ')
+        if (i > 0) { label += "," }
+        if (label.length == 0 || label.charAt(label.length - 1) == ' ')
           label += ' ';
         label += name + "=";
         label += num != null ? num.toFixed(f) + unit : "?";

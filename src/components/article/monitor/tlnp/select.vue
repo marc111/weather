@@ -146,7 +146,7 @@ export default {
   width: 100%;
   height: 20px;
   margin-bottom: 30px;
-  padding: 6px;
+  padding: 6px 6px 6px 26px;
   box-sizing: border-box;
   font-size: 0;
   .form-item {

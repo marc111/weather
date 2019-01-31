@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="版本" content="0.1/20110625" />
+<meta name="作者" content="木土" />
+<meta name="制作单位" content="广东省佛山市气象局" />
+<title>抬升凝结高度LCL对比验算表</title>
+<style type="text/css">
+	
+	table{
+		border-collapse:collapse;
+	}
+	caption{
+		text-align:left;
+	}
+	.exp{
+		margin-left:2em;
+	}
+</style>
+<script type="text/javascript" src="/lib2011/fixed.js"></script>
+<script type="text/javascript" src="/lib2011/fs121.js"></script>
+<script type="text/javascript" src="/lib2011/constant.js"></script>
+<script type="text/javascript" src="/lib2011/matrix.js"></script>
+<script type="text/javascript" src="/lib2011/math.js"></script>
+<script type="text/javascript" src="/lib2011/phy.js"></script>
+<script type="text/javascript" src="/lib2011/util.js"></script>
+<script type="text/javascript" src="js/verify_LCL.js"></script>
+<script type="text/javascript">
+</script> 
+</head>
+<body>
+	<h2>抬升凝结高度LCL对比验算表</h2>	
+	<p class="exp">——本表旨在验证佛山气象试验版<a href="/#/monitor/tlnp/tlnp">T-lnP图解</a>项目算法和效率。</p>
+	<p>制作：木土，佛山市气象局，2011-10</p>
+	<div>
+		总用时：<span id="timer_a"></span>ms<br/>
+		算法运算用时：<span id="timer_c"></span><br/>
+		运算数：<span id="cnt"></span>个<br/>
+	</div>
+	<p>说明：通过比较确定本项目LCL算法。每个单元格中，第一行为根据对应算式计算的LCL气压，余下各行为根据对应算式计算的LCL气压与第一行数值差。可认为交点法(求解等位温线和等饱和比湿线交点)最精确，但速度慢(跟本项目使用的数值算法有关)；近似法速度最快，但偏差大；近似法和迭代法混合可达至平衡。</p>
+			<!--
+	<table id="data">
+		<thead>
+			<tr><th>t / t-td</th><th>0.0</th><th>0.2</th><th>0.4</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>-20.0</td><td>255.2</td><td>255.2</td><td>255.2</td></tr>
+		</tbody>
+	</table>
+			-->
+</body>
+</html>
+
+
+
+

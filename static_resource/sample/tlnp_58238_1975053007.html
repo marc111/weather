@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="版本" content="0.1/20111024,0.11/20111222,0.2/20120310,0.3/20120323,0.4/20120428,0.5/20120502,0.6/20120607,0.7/20120619,0.8/20120710" />
+<meta name="作者" content="木土" />
+<meta name="制作单位" content="广东省佛山市气象局" />
+<title>T-lnP图解标本（之一）</title>
+<style type="text/css">
+	table{
+		border-collapse:collapse;
+	}
+	caption{
+		text-align:left;
+	}
+	.exp{
+		margin-left:2em;
+	}
+	.head{
+		text-align:center;
+	}
+	#nocanvas{
+		display:none;
+	}
+</style>
+<script type="text/javascript" src="/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/lib2011/fixed.js"></script>
+<script type="text/javascript" src="/lib2011/fs121.js"></script>
+<script type="text/javascript" src="/lib2011/util.js"></script>
+<script type="text/javascript" src="/lib2011/math.js"></script>
+<script type="text/javascript" src="/lib2011/matrix.js"></script>
+<script type="text/javascript" src="/lib2011/geometry2D.js"></script>
+<script type="text/javascript" src="/lib2011/g2dlnp.js"></script>
+<script type="text/javascript" src="/lib2011/constant.js"></script>
+<script type="text/javascript" src="/lib2011/phy.js"></script>
+<script type="text/javascript" src="/lib2011/data.upper.js"></script>
+<script type="text/javascript" src="/lib2011/wsymbol.js"></script>
+<script type="text/javascript" src="/lib2011/tmgram/tlnputil.js"></script>
+<script type="text/javascript" src="/lib2011/tmgram/tlnp.js"></script>
+<script type="text/javascript" src="/lib2011/tmgram/tlnpcanvas.js"></script>
+<script type="text/javascript" src="/lib2011/tmgram/tlnpplugin.js"></script>
+<script type="text/javascript" src="js/tlnp_58238_1975053007.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		draw(1);
+	});
+</script>
+</head>
+<body>
+	<h2>T-lnP图解标本（之一）</h2>
+	<p class="exp">——旨在验算佛山气象试验版之<a href="http://2008.fs121.com/tlnp.html" target="_blank">T-lnP项目</a>。样本取自《天气学分析》(第二版，寿绍文等编著.气象出版社.2008.p96)</p>
+	<p>制作：佛山市气象局&nbsp;&nbsp;&nbsp;&nbsp;更新：2012-07&nbsp;&nbsp;&nbsp;&nbsp;总用时：<span id="timer_a"></span>&nbsp;&nbsp;&nbsp;&nbsp;更多标本：<a href="tlnp_58238_1975053007-2.html">之二</a></p>
+<table class="sample">
+	<tr><td class="head">埃玛图解(1050~200hPa)</td><td class="head">埃玛图解(1050~50hPa)</td></tr>
+	<tr><td>
+		<canvas id="tlnp_ema200" width="785" height="573"></canvas>
+	</td><td>
+		<canvas id="tlnp_ema50" width="785" height="573"></canvas>
+	</td></tr>
+	<tr><td class="head">压-高曲线</td><td class="head">LCL、LFC、EL、EAL</td></tr>
+	<tr><td>
+		<canvas id="p-h_curve" width="785" height="573"></canvas>
+	</td><td>
+		<canvas id="LCL" width="785" height="573"></canvas>
+	</td></tr>
+	<tr><td class="head">CCL、ts</td><td class="head">几个特征温度所在高度</td></tr>
+	<tr><td>
+		<canvas id="CCL" width="785" height="573"></canvas>
+	</td><td>
+		<canvas id="SpecialTempLayer" width="785" height="573"></canvas>
+	</td></tr>
+</table>	
+<div id="nocanvas">
+		<p style="color:red">您正在使用的浏览器不支持HTML5，仅显示截图。Your browser does not support HTML 5.</p>
+		<p>您必须使用支持HTML5的浏览器，如：Firefox、Safari、Opera、Chrome、
+		IE9+(非“兼容性视图”模式)等，才能看到真实计算的图解。</p>
+		<img src="tlnp_58238_1975053007-1.GIF" />
+</div>
+<div id='data'></div>
+</body>
+</html>

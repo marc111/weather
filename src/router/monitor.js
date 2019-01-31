@@ -37,7 +37,11 @@ export default [{
   name: 'awshou',
   component: awshou
 }, {
-  path: 'tlnp',
+  path: 'tlnp/:id',
   name: 'tlnp',
-  component:tlnp
+  component: tlnp,
+  children: [{
+    path: '/monitor/tlnp',
+    redirect: '/monitor/tlnp/tlnp'
+  }]
 }]

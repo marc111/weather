@@ -1,40 +1,39 @@
 <template>
   <div class="monitor-tlnp-nav">
-    <template v-for="(item,index) in navList">
-      <span
+    <template v-for="item in navList">
+      <router-link
         :key="'nav_'+item.id"
-        :class="{'current':index==current}"
-        @click="navClick(index)"
-      >{{item.name}}</span>
+        :class="['button',{'current':item.id==canvasId}]"
+        :to="item.path"
+      >{{item.name}}</router-link>
     </template>
   </div>
 </template>
 <script>
 export default {
+  props: ['canvas-id'],
   data() {
     return {
       current: 0,
       navList: [
         {
           name: 'T-LnP',
-          id: 'tlnp'
+          id: 'canvas-tlnp',
+          path: '/monitor/tlnp/tlnp'
         }, {
           name: '高空风分析',
-          id: 'hodograph'
+          id: 'canvas-hodograph',
+          path: '/monitor/tlnp/hodograph'
         }, {
           name: '高度',
-          id: 'height'
+          id: 'canvas-height',
+          path: '/monitor/tlnp/height'
         }, {
           name: '未分类',
-          id: 'v-distribution'
+          id: 'canvas-v-distribution',
+          path: '/monitor/tlnp/v-distribution'
         }
       ]
-    }
-  },
-  methods: {
-    navClick(index) {
-      this.current = index
-      this.$emit('navUpdate', this.navList[index])
     }
   }
 }
@@ -43,9 +42,10 @@ export default {
 .monitor-tlnp-nav {
   width: 100%;
   height: 28px;
+  padding-left: 20px;
   margin-bottom: 10px;
   box-sizing: border-box;
-  span {
+  .button {
     width: 96px;
     height: 28px;
     line-height: 28px;
