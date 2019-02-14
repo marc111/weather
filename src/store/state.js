@@ -31,13 +31,6 @@ const state = {
       iconCurrent: require('components/article/img/content-nav/L1_2_2.png')
     },
     {
-      path: '/forecast/town',
-      name: 'town',
-      title: '乡镇天气预报',
-      icon: require('components/article/img/content-nav/L1_13.png'),
-      iconCurrent: require('components/article/img/content-nav/L1_13_2.png')
-    },
-    {
       path: '/forecast/scenicSpot',
       name: 'scenicSpot',
       title: '景区预报',
@@ -93,6 +86,7 @@ const state = {
       icon: require('components/article/img/content-nav/L1_7.png'),
       iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
     }
+  ],
     ]
   },
   {

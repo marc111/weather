@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="版本" content="0.1/20110625" />
+<meta name="作者" content="木土" />
+<meta name="制作单位" content="广东省佛山市气象局" />
+<title>高空比湿q对比验算表</title>
+<style type="text/css">
+	
+	table{
+		border-collapse:collapse;
+	}
+	caption{
+		text-align:left;
+	}
+	.exp{
+		margin-left:2em;
+	}
+</style>
+<script type="text/javascript" src="/lib2011/fs121.js"></script>
+<script type="text/javascript" src="/lib2011/constant.js"></script>
+<script type="text/javascript" src="/lib2011/phy.js"></script>
+<script type="text/javascript" src="/lib2011/util.js"></script>
+<script type="text/javascript" src="js/verify_q.js"></script>
+<script type="text/javascript">
+</script> 
+</head>
+<body>
+	<h2>高空比湿q对比验算表</h2>
+	<p class="exp">——本表旨在验证佛山气象试验版<a href="/#/monitor/tlnp/tlnp">T-lnP图解</a>项目算法。表项格式参照《气象常用参数和物理量查算表》(陈创买,郭英琼著.气象出版社.1980.p240~243)</p>
+	<p>制作：木土，佛山市气象局，2011-07</p>
+	<p>总用时：<span id="timer_a"></span>ms，运算用时：<span id="timer_c"></span>ms，运算数<span id="cnt"></span>个</p>
+	<p>单位：克/千克。每个单元格中，第一行为根据对应饱和水汽压公式计算的比湿(q0,相对于水面,未考虑增长系数ｆ(p,T)的作用，下同)，余下各行为根据对应饱和水汽压公式计算的比湿与第一行数值差(q-q0)</p>
+			<!--
+	<table id="data">
+		<thead>
+			<tr><th>t / t-td</th><th>0.0</th><th>0.2</th><th>0.4</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>-20.0</td><td>255.2</td><td>255.2</td><td>255.2</td></tr>
+		</tbody>
+	</table>
+			-->
+</body>
+</html>
+
+
+
+
