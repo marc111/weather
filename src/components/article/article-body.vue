@@ -41,7 +41,7 @@ export default {
   data: function () {
     return {
       current: '',
-      navData:{}
+      navData: {}
     }
   }
 }

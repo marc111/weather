@@ -7,7 +7,7 @@
             <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.value }}</Option>
         </Select>
         <div class="leftbutton"><button>左边</button></div>
-        <div class="contentbutton"><button>暂停</button></div>
+        <div class="contentbutton" @click="stop"><button>{{titlestop}}</button></div>
         <div class="rightbutton"><button>右边</button></div>
       </div>
 
@@ -31,20 +31,15 @@
       </div>
       <!-- 底部说明文字 -->
       <div class="footercolud">
-        <img src="./img/title.png" alt="">
-        <!-- <span>说明:</span>
+        <!-- <img src="./img/title.png" alt=""> -->
+        <span>说明:</span>
         <br>
         <p>云图图像上显示的时间是世界时,标题时间为北京时。</p>
-        <br>
         <p>动画序列是由过去12幅卫星云图组成，每隔半小时或一小时一幅。图像动画能让观看者更清楚地了解云团的移动变化。</p>
-        <br>
         <p>风云-2C位于东经105度的赤道上空，距离地面约35,800公里。这颗卫星紧随地球的自转而运行，相对于地面是静止不动的(故又名地球同步卫星)，因此可以24小</p>
-        <br>
         <p>时不断拍摄地球上同一地区的云图。</p>
-        <br>
         <p>红外云图基本上显示观测物(如云)的温度。一般来说，云顶愈高，温度愈低，它在图像中便显得越明亮。</p>
-        <br>
-        <p>以上图像已经处理过，以符合视觉效果。</p> -->
+        <p>以上图像已经处理过，以符合视觉效果。</p>
       </div>
     </div>
   </div>
@@ -61,25 +56,26 @@ export default {
     return {
       mySwiper: '',
       model1: '',
+      titlestop: '暂停',
       imgArray: [
         {
           value: 'New York1',
-          imgurl: require('./img/meng01.png')
+          imgurl: require('./img/nianhui1.png')
         }, {
           value: 'New York2',
-          imgurl: require('./img/meng02.png')
+          imgurl: require('./img/nianhui2.png')
         }, {
           value: 'New York3',
-          imgurl: require('./img/meng03.png')
+          imgurl: require('./img/nianhui3.png')
         }, {
           value: 'New York4',
-          imgurl: require('./img/meng04.png')
+          imgurl: require('./img/nianhui4.png')
         }, {
           value: 'New York5',
-          imgurl: require('./img/meng05.png')
+          imgurl: require('./img/nianhui5.png')
         }, {
           value: 'New York6',
-          imgurl: require('./img/meng06.png')
+          imgurl: require('./img/nianhui1.png')
         }
       ],
       value2: 0,
@@ -141,10 +137,16 @@ export default {
       })
     },
     stop () {
-      this.mySwiper.autoplay.stop()
+      if (this.titlestop === '暂停') {
+        this.mySwiper.autoplay.stop()
+        this.titlestop = '开始'
+      } else if (this.titlestop === '开始') {
+        this.mySwiper.autoplay.start()
+        this.titlestop = '暂停'
+      }
     },
     start () {
-      this.mySwiper.autoplay.start()
+
     }
   },
   mounted () {
@@ -169,7 +171,7 @@ export default {
       width: 100%;
       height: 40px;
       margin-bottom: 15px;
-      background-color: red;
+      // background-color: red;
       > .leftbutton {
         display: inline-block;
       }

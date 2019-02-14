@@ -28,10 +28,10 @@
 
 <script>
 export default {
-  mounted() {
+  mounted () {
     this.navList = this.$store.state.navList
   },
-  data() {
+  data () {
     return {
       navList: []
     }
