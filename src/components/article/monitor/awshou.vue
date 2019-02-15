@@ -11,45 +11,46 @@
       </div>
       <div class="zdMenu-box">
         <div class="zdMenu-left">
-          <Collapse :hide-arrow='true' v-model="value2">
+          <Collapse :hide-arrow='true' accordion v-model="value2">
             <Panel name="1"  :hide-arrow='true'>
               自动站时次记录
-              <p class="zdMenu-left-item item-active" slot="content">
-                2019-01-28 10:00
+              <p @click="switchTime(item)" v-for="(item, index) in awshouTime" :key="index" class="zdMenu-left-item" :class="[false?'item-active':'']" slot="content">
+                {{item}}
               </p>
-              <p class="zdMenu-left-item" slot="content">
-                2019-01-28 10:00
-              </p>
-              <p class="zdMenu-left-item" slot="content">
-                2019-01-28 10:00
-              </p>
+
             </Panel>
             <Panel name="2">
-              自动站时次记录
-              <p class="zdMenu-left-item" slot="content">
-                2019-01-28 10:00
+              日记录（20-20时）
+              <p @click="switchTime(item)" v-for="(item, index) in timeday" :key="index" class="zdMenu-left-item" slot="content">
+                {{item.value}}
               </p>
             </Panel>
             <Panel name="3">
-              自动站时次记录
-              <p class="zdMenu-left-item" slot="content">
+              日记录（8-8时）
+              <p @click="switchTime" class="zdMenu-left-item" slot="content">
                 2019-01-28 10:00
               </p>
             </Panel>
             <Panel name="4">
-              自动站时次记录
-              <p class="zdMenu-left-item" slot="content">
+              时极值、雨量
+              <p @click="switchTime" class="zdMenu-left-item" slot="content">
+                2019-01-28 10:00
+              </p>
+            </Panel>
+            <Panel name="5">
+              时内5分钟雨量
+              <p @click="switchTime" class="zdMenu-left-item" slot="content">
                 2019-01-28 10:00
               </p>
             </Panel>
           </Collapse>
         </div>
         <div class="zdMenu-right" v-show="flag == 'table'">
-          <Table :columns="columns1"></Table>
+          <Table :columns="columnsTable"></Table>
         </div>
         <div class="zdMenu-right">
           <div>
-            <awshouMap :currentIndex="currentIndex" />
+            <awshouMap :awshouData="awshouData" :currentIndex="currentIndex" />
           </div>
         </div>
       </div>
@@ -60,7 +61,10 @@
 <script>
 import awshouMap from './components/'
 import mapData from './components/data.json'
-console.log(mapData, 990)
+import awshouData from './components/index.json'
+import awshouTime from './components/time.json'
+import weaterData from './components/weater.json'
+import timeday from './components/timeday.json'
 export default {
   components: {
     awshouMap
@@ -68,9 +72,12 @@ export default {
   data () {
     return {
       showlist: false,
-      currentIndex: 0,
+      currentIndex: 8,
       model1: '全市',
       flag: 'map',
+      awshouData: awshouData.data,
+      awshouTime: awshouTime,
+      timeday: timeday,
       showlistArray: [
         {
           val: '全市',
@@ -93,7 +100,7 @@ export default {
         }
       ],
       value2: '1',
-      columns1: [
+      columnsTable: [
         {
           title: '地点',
           key: 'name',
@@ -130,6 +137,26 @@ export default {
       this.showlistArray.forEach(val => {
         if (val.val === item) this.currentIndex = val.index
       })
+    },
+    getTableData() {
+
+    },
+    switchTime() {
+      // alert(this.value2)
+      console.log(this.value2[this.value2.length-1])
+      switch (this.value2[this.value2.length-1]) {
+        case '1':
+          // alert(1)
+          this.awshouData = weaterData.data;
+          console.log(this.awshouData, 909090)
+          break;
+        case '2':
+          // alert(2)
+          this.awshouData = awshouData.data;
+          break;
+        default:
+          break;
+      }
     }
   }
 }
@@ -197,11 +224,16 @@ export default {
     }
     .ivu-collapse-content-box {
       padding: 0px !important;
+      max-height: 240px;
+      overflow-y: scroll;
       .zdMenu-left-item {
         line-height: 30px;
         cursor: pointer;
         &.item-active {
           color: #025bc4;
+        }
+        &:hover {
+          text-decoration: underline;
         }
       }
     }
