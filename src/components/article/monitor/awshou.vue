@@ -17,7 +17,6 @@
               <p @click="switchTime(item)" v-for="(item, index) in awshouTime" :key="index" class="zdMenu-left-item" :class="[false?'item-active':'']" slot="content">
                 {{item}}
               </p>
-
             </Panel>
             <Panel name="2">
               日记录（20-20时）
