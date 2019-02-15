@@ -12,9 +12,7 @@
   </div>
 </template>
 <script>
-
 import articleContentNav from "./article-contentnav";
-
 export default {
   props: ['parent-path'],
   components: {
@@ -57,4 +55,3 @@ export default {
   }
 }
 </style>
-
