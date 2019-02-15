@@ -1,14 +1,31 @@
 <template>
   <div class="tornado-introduce">
-    <span class="title">佛山市龙卷风研究中心</span>
-    <p>机构简介：佛山市龙卷风研究中心隶属佛山市气象局，成立于2013年8月，是国内首家龙卷风专门研究机构，额定事业编制10名。中心任务包括：开展龙卷风等灾害性天气的科学实验与研究，为气象防灾减灾助力；负责龙卷风的监测和中小尺度数值模式的平台建设、技术开发与业务运行；负责组织龙卷风等灾害性天气的科普等工作。</p>
-    <img src="/jigou/tornado.jpg" />
+    <span class="title">{{title}}</span>
+    <span class="content" v-html="content"></span>
   </div>
 </template>
 <script>
 // 本地预报
-export default {
 
+import axios from "axios"
+import * as api from 'api/config'
+
+export default {
+  mounted() {
+    axios.get(api.request_organizationSynopsis).then(res => {
+      if (res.status == 200 && res.data) {
+        const result = res.data.articleList[0]
+        this.content = result.content
+        this.title = result.title
+      }
+    })
+  },
+  data() {
+    return {
+      content: '',
+      title: ''
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -24,14 +41,11 @@ export default {
     font-size: 22px;
     text-align: center;
   }
-  p {
+  .content{
+    width: 100%;
     display: block;
-    margin-bottom: 24px;
-    line-height: 24px;
-    font-size: 19px;
-    font-family: "宋体";
   }
-  img{
+  img {
     width: 800px;
     height: 380px;
     display: block;
