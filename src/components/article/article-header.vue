@@ -73,7 +73,7 @@
 <script>
 export default {
   props: ['navList', 'current']
-};
+}
 </script>
 
 <style lang="scss" scoped>
