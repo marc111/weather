@@ -49,11 +49,18 @@ export default {
       weatherMonitor: {},
       visibility: {},
       realScene: {},
+      awshou: {
+        icon: require('components/article/img/content-nav/L1_7.png'),
+        iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
+      },
       sRadar: {
         icon: require('components/article/img/content-nav/L1_7.png'),
         iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
       },
-      xRadar: {},
+      xRadar: {
+        icon: require('components/article/img/content-nav/L1_7.png'),
+        iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
+      },
       cloud: {
         icon: require('components/article/img/content-nav/L1_7.png'),
         iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
