@@ -1,5 +1,5 @@
 <template>
-	<div class="home">
+  <div class="home">
     <div class="home-body">
       <!--头部轮播图  -->
       <div class="index-banner">
@@ -17,14 +17,20 @@
       <div class="hNav-content">
         <!-- 向上滚动通告栏 -->
         <div class="homebar">
-          <ul class="_container" id="demo">
+          <ul
+            class="_container"
+            id="demo"
+          >
             <li>我是第一个出现的</li>
             <li>我是第二个出现的</li>
             <li>我是第三个出现的</li>
             <li>我是第四个出现的</li>
             <li>我要开始循环了(第五个)</li>
           </ul>
-          <ul class="_container" id="demo2">
+          <ul
+            class="_container"
+            id="demo2"
+          >
             <li>例2我是第一个出现的</li>
             <li>例2我是第二个出现的</li>
             <li>例2我是第三个出现的</li>
@@ -44,15 +50,24 @@
                   <li><a href="http://www.fs121.com/Typhoon.aspx">台风</a></li>
                 </ul>
               </div>
-              <div class="ybpic yahei" style="display:block;">
+              <div
+                class="ybpic yahei"
+                style="display:block;"
+              >
                 <div class="xg"></div>
-                <div class="yubao_day1" id="yubao_day1">
+                <div
+                  class="yubao_day1"
+                  id="yubao_day1"
+                >
 
                   <div class="shik_p1">
                     <div class="sName">
                       <p class="pName">现在 · 禅城</p>
                       <p class="skNext">
-                        <img src="./img/skNext.png" alt="">
+                        <img
+                          src="./img/skNext.png"
+                          alt=""
+                        >
                       </p>
                     </div>
                     <div class="clear"></div>
@@ -72,25 +87,46 @@
 
                   <div class="shik_p1">
                     <div class="sun">
-                      <img src="./img/cloudy.png" alt="">
+                      <img
+                        src="./img/cloudy.png"
+                        alt=""
+                      >
                     </div>
                   </div>
                 </div>
               </div>
               <!-- 天气趋势 -->
-              <div class="ds" style="border:none;background:none;">
-                <div class="d1" style="background:#f9f9f9;">
+              <div
+                class="ds"
+                style="border:none;background:none;"
+              >
+                <div
+                  class="d1"
+                  style="background:#f9f9f9;"
+                >
                   <p class="p6">逐三小时预测</p>
                   <div class="sxsfont mb sxsyc">
-                    <ul class="sxs_59828" style="display:block;">
-                      <li v-for="(item, index) in ssdatadivArray" :key="item.index">
+                    <ul
+                      class="sxs_59828"
+                      style="display:block;"
+                    >
+                      <li
+                        v-for="(item, index) in ssdatadivArray"
+                        :key="item.index"
+                      >
                         <div class="ssdatadiv">
                           {{item.date}}
                           <font color="#0055c2">{{item.datetime}}</font>
                         </div>
                         <div class="yb_h">
-                          <div class="wea" :title="item.wsrain">
-                            <img :src="item.imgurl" alt="">
+                          <div
+                            class="wea"
+                            :title="item.wsrain"
+                          >
+                            <img
+                              :src="item.imgurl"
+                              alt=""
+                            >
                             <p class="ws">{{item.wsrain}}</p>
                             <p class="ws">{{item.hot}}</p>
                           </div>
@@ -101,45 +137,75 @@
                 </div>
                 <div class="d2">
                   <p class="p6">天气趋势</p>
-                  <div class="dsfont1 mb" id="duanshi_o_cc">
+                  <div
+                    class="dsfont1 mb"
+                    id="duanshi_o_cc"
+                  >
                     <p>
                       预计今天白天阴天，有小雨，天气依旧寒冷；11日到12日受新一股冷空气补充影响，气温重新有所下降
                       <em>12月10日08时00分发布</em>
                     </p>
                   </div>
                 </div>
-                <div class="d3" style="background-color:#a4d3ff" id="ds">
+                <div
+                  class="d3"
+                  style="background-color:#a4d3ff"
+                  id="ds"
+                >
                   <p class="p5 pwhx">短时预报</p>
                   <!-- 占位 -->
-                   <Tabs value="name1">
-                      <TabPane label="禅城" name="name1">
-                        <div class="shtime_0">
-                          <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
-                        </div>
-                        <br>
-                        <div class="shtime_1">
-                          <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
-                        </div>
-                      </TabPane>
-                      <TabPane label="南海" name="name2">标签二的内容</TabPane>
-                      <TabPane label="顺德" name="name3">标签三的内容</TabPane>
-                      <TabPane label="高明" name="name4">标签四的内容</TabPane>
-                      <TabPane label="三水" name="name5">标签五的内容</TabPane>
+                  <Tabs value="name1">
+                    <TabPane
+                      label="禅城"
+                      name="name1"
+                    >
+                      <div class="shtime_0">
+                        <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
+                      </div>
+                      <br>
+                      <div class="shtime_1">
+                        <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
+                      </div>
+                    </TabPane>
+                    <TabPane
+                      label="南海"
+                      name="name2"
+                    >标签二的内容</TabPane>
+                    <TabPane
+                      label="顺德"
+                      name="name3"
+                    >标签三的内容</TabPane>
+                    <TabPane
+                      label="高明"
+                      name="name4"
+                    >标签四的内容</TabPane>
+                    <TabPane
+                      label="三水"
+                      name="name5"
+                    >标签五的内容</TabPane>
                   </Tabs>
                 </div>
 
                 <!-- 十五天天气预报 -->
                 <div class="nav_6 clear">
                   <ul>
-                    <li :class="[flag==1?'active':'']" style="cursor:pointer;" @click="change(1)">十天预报</li>
-                    <li :class="[flag==2?'active':'']" style="cursor:pointer;" @click="change(2)">十五天预报</li>
+                    <li
+                      :class="[flag==1?'active':'']"
+                      style="cursor:pointer;"
+                      @click="change(1)"
+                    >十天预报</li>
+                    <li
+                      :class="[flag==2?'active':'']"
+                      style="cursor:pointer;"
+                      @click="change(2)"
+                    >十五天预报</li>
                   </ul>
                   <div class="zdqw">
                     <div class="zdwd">
-                        <img src="./img/home_004.jpg">最低温度
+                      <img src="./img/home_004.jpg">最低温度
                     </div>
                     <div class="zdwd">
-                        <img src="./img/home_005.jpg">最高温度（单位：℃）
+                      <img src="./img/home_005.jpg">最高温度（单位：℃）
                     </div>
                     <p>发布日期：{{navtime}}<span id="date_fb"></span></p>
                     <p style="margin-right: 10px">
@@ -148,28 +214,48 @@
                   </div>
                 </div>
                 <!-- 趋势图 -->
-                <div class="daytq0" v-if="flag == 1">
+                <div
+                  class="daytq0"
+                  v-if="flag == 1"
+                >
                   <div class="littit_10">
-                    <span class="s_ws" v-for="(item, index) in swsArray" :key="item.index">
+                    <span
+                      class="s_ws"
+                      v-for="(item, index) in swsArray"
+                      :key="item.index"
+                    >
                       {{item.datetime}}
                       <br>
                       {{item.day}}
                       <br>
                       <br>
-                      <img :src="item.imgurl" :alt="item.altholder">
+                      <img
+                        :src="item.imgurl"
+                        :alt="item.altholder"
+                      >
                     </span>
                   </div>
                   <canvas-one />
                 </div>
-                <div class="daytq1" v-if="flag == 2">
+                <div
+                  class="daytq1"
+                  v-if="flag == 2"
+                >
                   <div class="littit_10">
-                    <span class="s_ws" v-for="(item, index) in swsArraytoo" :key="item.index">
+                    <span
+                      class="s_ws"
+                      v-for="(item, index) in swsArraytoo"
+                      :key="item.index"
+                    >
                       {{item.datetime}}
                       <br>
                       {{item.day}}
                       <br>
                       <br>
-                      <img :src="item.imgurl" :alt="item.altholder">
+                      <img
+                        :src="item.imgurl"
+                        :alt="item.altholder"
+                      >
                     </span>
                   </div>
                   <canvas-list />
@@ -177,10 +263,13 @@
 
                 <!-- 本地交通预报 -->
                 <div class="left_menudiv">
-                  <title-content :titlearray="titlearrays"/>
+                  <title-content :titlearray="titlearrays" />
                   <div class="bdyb_index">
                     <a href="#">
-                      <img src="./img/jtmap_index.jpg" alt="">
+                      <img
+                        src="./img/jtmap_index.jpg"
+                        alt=""
+                      >
                     </a>
                   </div>
                 </div>
@@ -190,18 +279,26 @@
                 <home-centerimg
                   :headetitle="headetitleleft"
                   :headcontent="headcontentleft"
-                  :imgurlcontent="imgurlcontentleft"/>
+                  :imgurlcontent="imgurlcontentleft"
+                />
                 <!-- 龙卷研究 -->
                 <home-imgright
                   :headetitle="headetitleright"
                   :headcontent="headcontentright"
-                  :imgurlcontent="imgurlcontentright"/>
+                  :imgurlcontent="imgurlcontentright"
+                />
                 <!-- 虚拟观测场 -->
                 <div class="left_menudiv">
-                  <title-content :titlearray="titlearraybottom" :moretitle="moreleft"/>
+                  <title-content
+                    :titlearray="titlearraybottom"
+                    :moretitle="moreleft"
+                  />
                   <div class="bdyb_index">
                     <a href="#">
-                      <img src="./img/jtmap_index.jpg" alt="">
+                      <img
+                        src="./img/jtmap_index.jpg"
+                        alt=""
+                      >
                     </a>
                   </div>
                 </div>
@@ -240,7 +337,7 @@
       <!-- 底部 -->
       <div class="hNav-footer"></div>
     </div>
-	</div>
+  </div>
 </template>
 
 <script>
@@ -281,7 +378,7 @@ export default {
     homeWork,
     homeNotice
   },
-  data () {
+  data() {
     return {
       flag: 1,
       headetitleleft: '出行天气预报',
@@ -454,20 +551,16 @@ export default {
       moreleft: '更多 >'
     }
   },
-  created () {
+  created() {
     // this._getcanvasList()
     // this._getlist()
   },
   methods: {
-    change(flag){
+    change(flag) {
       this.flag = flag
     }
   },
-  computed:{
- 
-  },
-  mounted () {
-    console.log(this.$store.dispatch('getInitData'))
+  mounted() {
     myScroll.upScroll("demo", "-36px", 3200)
     myScroll.upScroll("demo2", "-36px", 2000)
     this.$nextTick(() => {
@@ -479,10 +572,10 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-@import '~common/scss/color';
+@import "~common/scss/color";
 
 .home {
-  background: url('./img/homeBg.jpg') repeat-y top center #f1f1f1;
+  background: url("./img/homeBg.jpg") repeat-y top center #f1f1f1;
   width: 100%;
   position: relative;
   > .home-body {
@@ -525,7 +618,7 @@ export default {
           }
           > li:first-child {
             margin-top: 0;
-            transition: margin-top .8s;
+            transition: margin-top 0.8s;
           }
         }
       }
@@ -544,14 +637,14 @@ export default {
               width: 752px;
               height: 40px;
               border-bottom: #0055c2 solid 2px;
-              background:#ededed;
+              background: #ededed;
               float: left;
               > ul {
                 > li {
                   float: left;
                   color: #666;
                   font-size: 16px;
-                  font-family:"Microsoft Yahei";
+                  font-family: "Microsoft Yahei";
                   width: 127px;
                   text-align: center;
                   line-height: 40px;
@@ -569,7 +662,7 @@ export default {
               }
             }
             > .ybpic {
-              background: url('./img/home_003.jpg') no-repeat;
+              background: url("./img/home_003.jpg") no-repeat;
               width: 752px;
               height: auto;
               float: left;
@@ -666,7 +759,7 @@ export default {
                   float: left;
                   text-indent: inherit;
                 }
-                > .dsfont1{
+                > .dsfont1 {
                   width: 700px;
                   float: left;
                   margin: 15px 0 15px 20px;
@@ -712,7 +805,6 @@ export default {
       }
     }
     > .hNav-footer {
-
     }
   }
 }
@@ -773,7 +865,7 @@ export default {
   margin-top: 10px;
   > ul {
     float: left;
-    line-height:24px;
+    line-height: 24px;
     > li {
       float: left;
       // color: #666;
@@ -839,9 +931,9 @@ export default {
       text-align: center;
       color: #7b7b7b;
       font-weight: bold;
-      font-size:14px;
-      line-height:18px;
-      background:url(./img/line10.jpg) top right no-repeat;
+      font-size: 14px;
+      line-height: 18px;
+      background: url(./img/line10.jpg) top right no-repeat;
     }
     .s_ws {
       width: 10%;
@@ -869,9 +961,9 @@ export default {
       text-align: center;
       color: #7b7b7b;
       font-weight: bold;
-      font-size:14px;
-      line-height:18px;
-      background:url(./img/line10.jpg) top right no-repeat;
+      font-size: 14px;
+      line-height: 18px;
+      background: url(./img/line10.jpg) top right no-repeat;
     }
     .s_ws {
       width: 77px;
@@ -902,5 +994,4 @@ export default {
     }
   }
 }
-
 </style>

@@ -21,27 +21,25 @@ export default {
     articleContentNav
   },
   mounted() {
-    let navData = {}
-    this.$store.state.navList.forEach(item=>{
-      navData[item.name] = item.children
-    })
-    this.navData = navData
     this.current = this.$router.history.current.matched[1].name
   },
-  watch: {
-    $route (to, from) {
-      this.current = this.$router.history.current.matched[1].name
+  computed: {
+    navList() {
+      let navData = {}
+      this.$store.state.initData.catalog.forEach(item => {
+        navData[item.alias] = item.children
+      })
+      return navData[this.parentPath]
     }
   },
-  computed: {
-    navList () {
-      return this.navData[this.parentPath]
+  watch: {
+    $route(to, from) {
+      this.current = this.$router.history.current.matched[1].name
     }
   },
   data: function () {
     return {
-      current: '',
-      navData:{}
+      current: ''
     }
   }
 }
