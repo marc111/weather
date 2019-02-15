@@ -19,6 +19,7 @@
   </div>
 </template>
 <script>
+import Vue from 'Vue'
 import echarts from 'echarts'
 import axios from 'axios'
 import jqury from 'jquery'
@@ -87,6 +88,7 @@ export default {
             areaColor: this.colorMap[code[1]][0]
           }
         }
+
         this.dataList[code].push(obj)
       })
 

@@ -1,0 +1,149 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="版本" content="0.1/20110704" />
+<meta name="作者" content="木土" />
+<meta name="制作单位" content="广东省佛山市气象局" />
+<title>纯水/冰相的饱和水汽压E对比验算表</title>
+<style type="text/css">
+	
+	table{
+		border-collapse:collapse;
+	}
+	caption{
+		text-align:left;
+	}
+	.exp{
+		margin-left:2em;
+	}
+</style>
+<script type="text/javascript" src="/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/lib2011/fs121.js"></script>
+<script type="text/javascript" src="/lib2011/constant.js"></script>
+<script type="text/javascript" src="/lib2011/phy.js"></script>
+<script type="text/javascript" src="/lib2011/util.js"></script>
+<script type="text/javascript">
+	var phy = fs121.phy;
+	var timer=fs121.util.timer;
+	var list_tw=ar_tw(),list_ti=ar_ti(); //列首数值
+	var methods={'Goff-Gratch(1957)':phy.e_GoffGratch_1957,Magnus:phy.e_Magnus,'改进Magnus':phy.e_Magnus_improved,Emanuel:phy.e_Emanuel,Wexler:phy.e_Wexler,'WMO(2008)':phy.e_WMO_2008,'查算表公式':phy.e_table_1980/*,'雷雨顺公式':phy.e*/};
+	var timers={'Goff-Gratch(1957)':timer(),Magnus:timer(),'改进Magnus':timer(),Emanuel:timer(),Wexler:timer(),'WMO(2008)':timer(),'查算表公式':timer()/*,'雷雨顺公式':timer()*/};
+	var timer_a=timer();	//总计时器，运算计时器
+	var cnt=0;//运算次数
+	//制作t列表: 40,39...0...-80
+	function ar_tw(){
+		var a=[];
+		for(var i=40;i>=-40;i-=1)
+			a.push(i);
+		return a;
+	}
+	function ar_ti(){
+		var a=[];
+		for(var i=0;i>=-80;i-=1)
+			a.push(i);
+		return a;
+	}
+	function table_body(element,list_t,onIf){
+		var s="";
+		var j=0;
+		var e0s={};
+		for(var label in methods){
+			var fn=methods[label];
+			var timer_c=timers[label];
+			s+="<tr nowrap><td>"+label+"</td>";
+			for(var i=0,len=list_t.length;i<len;i++){
+				var t=list_t[i];
+				timer_c.resume();
+				var e=fn(phy.T(t),onIf);
+				timer_c.pause();
+				if(j==0){
+					e0s[""+t]=e;
+					s+="<td>"+e.toFixed(3)+"</td>";
+				}
+				else{
+					var delt=(e-e0s[""+t]).toFixed(2);
+					if(delt==0.0)
+						delt=0;
+					s+="<td>"+delt+"</td>";
+				}
+				cnt++;
+			}
+			j++;
+			s+="</tr>";
+			//element.innerHTML=s;
+			$(element).html(s);
+		}
+	}
+	function print_usetime(){
+		$("#timer_a").html(timer_a.sum()+"ms");
+		//document.getElementById("timer_a").innerHTML=timer_a.sum()+"ms";
+		var s="";
+		for(var label in timers){
+			var timer_c=timers[label];
+			s+=label+"："+timer_c.sum()+"ms，";
+		}
+		$("#timer_c").html(s);
+		$("#cnt").html(cnt);
+		//document.getElementById("timer_c").innerHTML=s;
+		//document.getElementById("cnt").innerHTML=cnt;
+	}
+	function table_frame(element,list_t){
+		var s="<tr><th>t<\/th>";
+		for(var i=0,len=list_t.length;i<len;i++){
+			s+="<th>"+list_t[i]+"<\/th>";
+		}
+		s+="<\/tr>";
+		$(element).html(s);
+		//element.innerHTML='<thead>'+s+'<\/thead>';
+	}
+	window.onload=function(){
+		timer_a.start();
+		for(var label in timers){
+			var timer_c=timers[label];
+			timer_c.start();
+			timer_c.pause();
+		}
+		table_frame(document.getElementById("water_thead"),list_tw);
+		table_frame(document.getElementById("ice_thead"),list_ti);
+		table_body(document.getElementById("water_tbody"),list_tw);
+		table_body(document.getElementById("ice_tbody"),list_ti,true);
+		for(var label in timers){
+			var timer_c=timers[label];
+			timer_c.stop();
+		}
+		timer_a.stop();
+		print_usetime();
+	}	
+</script> 
+</head>
+<body>
+	<h2>纯水/冰相的饱和水汽压E对比验算表</h2>
+	<p class="exp">——本表旨在验证佛山气象试验版<a href="/#/monitor/tlnp/tlnp">T-lnP图解</a>项目算法。</p>
+	<p>制作：木土，2011-07</p>
+	<div>
+		总用时：<span id="timer_a"></span><br/>
+		运算用时：<span id="timer_c"></span><br/>
+		运算数：<span id="cnt"></span>个<br/>
+	</div>
+	<p>单位：hPa。首行为对应算法下的饱和水汽压值。其下各行为对应算法下的计算值与首行值差。（查算表指：《气象常用参数和物理量查算表》陈创买,郭英琼.气象出版社.1980）</p>
+	<table border='1' cellpadding='1'>
+		<caption>水面Ew</caption>
+		<thead id="water_thead">
+		</thead>
+		<tbody id="water_tbody">
+		</tbody>
+	</table>
+	<table border='1' cellpadding='1'>
+		<caption>冰面Ei</caption>
+		<thead id="ice_thead">
+		</thead>
+		<tbody id="ice_tbody">
+		</tbody>
+	</table>
+</body>
+</html>
+
+
+
+
