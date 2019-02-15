@@ -11,15 +11,15 @@ const xradar = () =>
   import ('components/article/weatherMonitor/xradar')
 
 // 自动站
-const awshou = () =>
-  import ('components/article/weatherMonitor/awshou')
+const aws = () =>
+  import ('components/article/weatherMonitor/aws')
 
 const tlnp = () =>
   import ('components/article/weatherMonitor/tlnp')
 
 export default [{
   path: '/weatherMonitor',
-  redirect: '/weatherMonitor/awshou'
+  redirect: '/weatherMonitor/aws'
 }, {
   path: 'cloud',
   name: 'cloud',
@@ -33,9 +33,9 @@ export default [{
   name: 'xradar',
   component: xradar
 }, {
-  path: 'awshou',
-  name: 'awshou',
-  component: awshou
+  path: 'aws',
+  name: 'aws',
+  component: aws
 }, {
   path: 'T-lnP/:id',
   name: 'T-lnP',
