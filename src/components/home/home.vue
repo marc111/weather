@@ -294,12 +294,18 @@
                     :moretitle="moreleft"
                   />
                   <div class="bdyb_index">
-                    <a href="#">
+                    <!-- <a href="#">
                       <img
                         src="./img/jtmap_index.jpg"
                         alt=""
                       >
-                    </a>
+                    </a> -->
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="/360/index.html"
+                      frameborder="0"
+                    ></iframe>
                   </div>
                 </div>
                 <!-- 气象媒体 -->
@@ -330,12 +336,20 @@
             </div>
             <!-- 微博互动 -->
             <!-- 互动交流 -->
+            <div class="commtian">
+              <home-comm />
+            </div>
             <!-- 在线办事 -->
+            <div class="homeword">
+              <homeWord />
+            </div>
           </div>
         </div>
       </div>
       <!-- 底部 -->
-      <div class="hNav-footer"></div>
+      <div class="hNav-footer">
+        <homeFirendlink />
+      </div>
     </div>
   </div>
 </template>
@@ -359,6 +373,9 @@ import homeRightrain from './home-rightrain'
 import homeTablewarn from './home-tablewarn'
 import homeWork from './home-work'
 import homeNotice from './home-notice'
+import homeComm from './home-comm'
+import homeWord from './home-word'
+import homeFirendlink from './home-firendlink'
 
 export default {
   components: {
@@ -376,7 +393,10 @@ export default {
     homeRightrain,
     homeTablewarn,
     homeWork,
-    homeNotice
+    homeNotice,
+    homeComm,
+    homeWord,
+    homeFirendlink
   },
   data() {
     return {
@@ -597,7 +617,7 @@ export default {
     }
     > .hNav-content {
       width: 100%;
-      height: 2339px;
+      height: 2223px;
       > .homebar {
         width: 100%;
         > ul {
