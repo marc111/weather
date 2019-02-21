@@ -18,7 +18,8 @@ const state = {
   STATUS: '',
   STTUS: '',
   timeOut: '',
-  RESJUMPPATH: ''
+  RESJUMPPATH: '',
+  CANVASTEN: ''
 }
 
 export default state

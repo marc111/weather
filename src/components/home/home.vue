@@ -62,8 +62,8 @@
 
                   <div class="shik_p1">
                     <div class="sName">
-                      <p class="pName">现在 · 禅城</p>
-                      <p class="skNext">
+                      <p class="pName" v-model="dataForm.dist">{{dataForm.dist}}</p>
+                      <p class="skNext" @click="Clickswitch">
                         <img
                           src="./img/skNext.png"
                           alt=""
@@ -71,18 +71,18 @@
                       </p>
                     </div>
                     <div class="clear"></div>
-                    <div class="p2">11.6℃</div>
-                    <div class="p3">较昨日：上升1.5℃</div>
-                    <div class="p3">风向：西北</div>
-                    <div class="p3">风速：3 m/s </div>
-                    <div class="p3">能见度：无数据</div>
+                    <div class="p2" v-model="dataForm.t">{{dataForm.t}}</div>
+                    <div class="p3" v-model="dataForm.tCompareYesterday">较昨日：{{dataForm.tCompareYesterday}}</div>
+                    <div class="p3" v-model="dataForm.windChinese">风向：{{dataForm.windChinese}}</div>
+                    <div class="p3" v-model="dataForm.wf2">风速：{{dataForm.wf2}} </div>
+                    <div class="p3" v-model="dataForm.vis">能见度：{{dataForm.vis}}</div>
                   </div>
 
                   <div class="shik_p1 stationInfo">
-                    <div class="p3">本站气压：1023.9hPa</div>
-                    <div class="p3">相对湿度：78%</div>
-                    <div class="p3">09日10时至今0.5(mm)</div>
-                    <div class="p3">2018年12月10日10时30分</div>
+                    <div class="p3" v-model="dataForm.p">本站气压：{{dataForm.p}}</div>
+                    <div class="p3" v-model="dataForm.u">相对湿度：{{dataForm.u}}</div>
+                    <div class="p3" v-model="dataForm.r24">{{dataForm.r24}}</div>
+                    <div class="p3" v-model="dataForm.formatTime">{{dataForm.formatTime}}</div>
                   </div>
 
                   <div class="shik_p1">
@@ -116,19 +116,18 @@
                       >
                         <div class="ssdatadiv">
                           {{item.date}}
-                          <font color="#0055c2">{{item.datetime}}</font>
+                          <font color="#0055c2">{{item.formatTime}}</font>
                         </div>
                         <div class="yb_h">
                           <div
                             class="wea"
-                            :title="item.wsrain"
+                            :title="item.ws"
                           >
                             <img
-                              :src="item.imgurl"
+                              :src="item.w"
                               alt=""
                             >
-                            <p class="ws">{{item.wsrain}}</p>
-                            <p class="ws">{{item.hot}}</p>
+                            <p class="ws">{{item.t}}</p>
                           </div>
                         </div>
                       </li>
@@ -141,9 +140,9 @@
                     class="dsfont1 mb"
                     id="duanshi_o_cc"
                   >
-                    <p>
-                      预计今天白天阴天，有小雨，天气依旧寒冷；11日到12日受新一股冷空气补充影响，气温重新有所下降
-                      <em>12月10日08时00分发布</em>
+                    <p v-model="dataweather.content">
+                      {{dataweather.content}}
+                      <em v-model="dataweather.formatTime">{{dataweather.formatTime}}</em>
                     </p>
                   </div>
                 </div>
@@ -159,30 +158,107 @@
                       label="禅城"
                       name="name1"
                     >
-                      <div class="shtime_0">
-                        <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
+                      <div
+                        class="shtime_0"
+                        v-for="(item, index) in chanchengList.details"
+                        :key="item.index">
+                        <p>{{item}}</p>
                       </div>
                       <br>
-                      <div class="shtime_1">
+                      <!-- <div class="shtime_1">
                         <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
+                      </div> -->
+                      <div class="timerdate">
+                        <p
+                          class="pull-right"
+                          style="margin-right: 5px;"
+                          v-model="chanchengList.formatTime">{{chanchengList.formatTime}}</p>
                       </div>
                     </TabPane>
                     <TabPane
                       label="南海"
                       name="name2"
-                    >标签二的内容</TabPane>
+                    >
+                      <div
+                        class="shtime_0"
+                        v-for="(item, index) in nanhaiList.details"
+                        :key="item.index">
+                        <p>{{item}}</p>
+                      </div>
+                      <br>
+                      <!-- <div class="shtime_1">
+                        <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
+                      </div> -->
+                      <div class="timerdate">
+                        <p
+                          class="pull-right"
+                          style="margin-right: 5px;"
+                          v-model="chanchengList.formatTime">{{nanhaiList.formatTime}}</p>
+                      </div>
+                    </TabPane>
                     <TabPane
                       label="顺德"
                       name="name3"
-                    >标签三的内容</TabPane>
+                    >
+                      <div
+                        class="shtime_0"
+                        v-for="(item, index) in shundeList.details"
+                        :key="item.index">
+                        <p>{{item}}</p>
+                      </div>
+                      <br>
+                      <!-- <div class="shtime_1">
+                        <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
+                      </div> -->
+                      <div class="timerdate">
+                        <p
+                          class="pull-right"
+                          style="margin-right: 5px;"
+                          v-model="shundeList.formatTime">{{shundeList.formatTime}}</p>
+                      </div>
+                    </TabPane>
                     <TabPane
                       label="高明"
                       name="name4"
-                    >标签四的内容</TabPane>
+                    >
+                      <div
+                        class="shtime_0"
+                        v-for="(item, index) in gaomingList.details"
+                        :key="item.index">
+                        <p>{{item}}</p>
+                      </div>
+                      <br>
+                      <!-- <div class="shtime_1">
+                        <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
+                      </div> -->
+                      <div class="timerdate">
+                        <p
+                          class="pull-right"
+                          style="margin-right: 5px;"
+                          v-model="gaomingList.formatTime">{{gaomingList.formatTime}}</p>
+                      </div>
+                    </TabPane>
                     <TabPane
                       label="三水"
                       name="name5"
-                    >标签五的内容</TabPane>
+                    >
+                      <div
+                        class="shtime_0"
+                        v-for="(item, index) in sanshuiList.details"
+                        :key="item.index">
+                        <p>{{item}}</p>
+                      </div>
+                      <br>
+                      <!-- <div class="shtime_1">
+                        <p>预计19日08时至19日20时：多云到阴天，有轻雾或轻微灰霾，东北风1级，气温：15－22℃，相对湿度：50%-80%；</p>
+                      </div> -->
+                      <div class="timerdate">
+                        <p
+                          class="pull-right"
+                          style="margin-right: 5px;"
+                          v-model="sanshuiList.formatTime">{{sanshuiList.formatTime}}</p>
+                      </div>
+                    </TabPane>
                   </Tabs>
                 </div>
 
@@ -224,13 +300,13 @@
                       v-for="(item, index) in swsArray"
                       :key="item.index"
                     >
-                      {{item.datetime}}
+                      {{item.date}}
                       <br>
-                      {{item.day}}
+                      {{item.week}}
                       <br>
                       <br>
                       <img
-                        :src="item.imgurl"
+                        :src="item.wb"
                         :alt="item.altholder"
                       >
                     </span>
@@ -247,13 +323,13 @@
                       v-for="(item, index) in swsArraytoo"
                       :key="item.index"
                     >
-                      {{item.datetime}}
+                      {{item.date}}
                       <br>
-                      {{item.day}}
+                      {{item.week}}
                       <br>
                       <br>
                       <img
-                        :src="item.imgurl"
+                        :src="item.wbi"
                         :alt="item.altholder"
                       >
                     </span>
@@ -355,27 +431,30 @@
 </template>
 
 <script>
-import axios from 'axios'
-import homeswiper from './home-swiper'
-import hometop from './home-top'
-import homenav from './home-nav'
-import myScroll from 'common/js/scroll'
-import $ from "jquery"
-import canvasList from './canvaslist'
-import canvasOne from './canvasone'
-import titleContent from './titlecontent'
-import sliderImg from './sliderimg'
-import homeCenterimg from './home-centerimg'
-import homeImgright from './home-imgright'
-import homeVideo from './home-video'
-import homeScience from './home-science'
-import homeRightrain from './home-rightrain'
-import homeTablewarn from './home-tablewarn'
-import homeWork from './home-work'
-import homeNotice from './home-notice'
-import homeComm from './home-comm'
-import homeWord from './home-word'
-import homeFirendlink from './home-firendlink'
+import axios from "axios";
+import { mapMutations } from 'vuex'
+import homeswiper from "./home-swiper";
+import hometop from "./home-top";
+import homenav from "./home-nav";
+import myScroll from "common/js/scroll";
+import $ from "jquery";
+import canvasList from "./canvaslist";
+import canvasOne from "./canvasone";
+import titleContent from "./titlecontent";
+import sliderImg from "./sliderimg";
+import homeCenterimg from "./home-centerimg";
+import homeImgright from "./home-imgright";
+import homeVideo from "./home-video";
+import homeScience from "./home-science";
+import homeRightrain from "./home-rightrain";
+import homeTablewarn from "./home-tablewarn";
+import homeWork from "./home-work";
+import homeNotice from "./home-notice";
+import homeComm from "./home-comm";
+import homeWord from "./home-word";
+import homeFirendlink from "./home-firendlink";
+import { Gethomemore, Getshare10, Getshare15 } from "api/home";
+import { imgweather } from "api/config";
 
 export default {
   components: {
@@ -401,175 +480,41 @@ export default {
   data() {
     return {
       flag: 1,
-      headetitleleft: '出行天气预报',
-      headcontentleft: '为出行全国各地提供天气预报的快捷通道',
-      imgurlcontentleft: require('./img/cxtqyb_index.jpg'),
-      headetitleright: '龙卷研究',
-      headcontentright: '国内首家龙卷研究中心',
-      imgurlcontentright: require('./img/201410302776.jpg'),
-      navtime: '2018-12-19 10:31',
-      ssdatadivArray: [
-        {
-          date: '2018/12/10',
-          datetime: '11-14时',
-          wsrain: '阴天',
-          imgurl: require('./img/2.png'),
-          hot: '12~14℃'
-        }, {
-          date: '2018/12/10',
-          datetime: '11-14时',
-          wsrain: '阴天',
-          imgurl: require('./img/2.png'),
-          hot: '12~14℃'
-        }, {
-          date: '2018/12/10',
-          datetime: '11-14时',
-          wsrain: '阴天',
-          imgurl: require('./img/2.png'),
-          hot: '12~14℃'
-        }, {
-          date: '2018/12/10',
-          datetime: '11-14时',
-          wsrain: '阴天',
-          imgurl: require('./img/2.png'),
-          hot: '12~14℃'
-        }
-      ],
-      swsArray: [
-        {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/19',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }
-      ],
-      swsArraytoo: [
-        {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }, {
-          datetime: '12/20',
-          day: '周三',
-          imgurl: require('./img/1.png'),
-          altholder: '多云间阴天，早晚有轻雾'
-        }
-      ],
-      titlearrays: '本地交通预报',
-      titlearraybottom: '虚拟观测场',
-      moreleft: '更多 >'
-    }
+      headetitleleft: "出行天气预报",
+      headcontentleft: "为出行全国各地提供天气预报的快捷通道",
+      imgurlcontentleft: require("./img/cxtqyb_index.jpg"),
+      headetitleright: "龙卷研究",
+      headcontentright: "国内首家龙卷研究中心",
+      imgurlcontentright: require("./img/201410302776.jpg"),
+      navtime: "",
+      ssdatadivArray: [],
+      swsArray: [],
+      swsArraytoo: [],
+      titlearrays: "本地交通预报",
+      titlearraybottom: "虚拟观测场",
+      moreleft: "更多 >",
+      dataForm: {
+        p: "",
+        vis: "",
+        wf2: "",
+        t: "",
+        windChinese: "",
+        u: "",
+        r24: "",
+        formatTime: "",
+        dist: "",
+        tCompareYesterday: ""
+      },
+      dataweather: {
+        content: "",
+        formatTime: ""
+      },
+      chanchengList: [],
+      nanhaiList: [],
+      shundeList: [],
+      gaomingList: [],
+      sanshuiList: []
+    };
   },
   created() {
     // this._getcanvasList()
@@ -577,19 +522,116 @@ export default {
   },
   methods: {
     change(flag) {
-      this.flag = flag
-    }
+      this.flag = flag;
+    },
+    // 综合
+    _Gethomemore() {
+      Gethomemore().then(res => {
+        // console.log(res);
+        this.dataForm = res.data.realNHours[0].real;
+        for (var i = 0; i < res.data.realNHours[0].nHours.length; i++) {
+          var temp = `${imgweather}${res.data.realNHours[0].nHours[i].w}.png`;
+          res.data.realNHours[0].nHours[i].w = temp;
+        }
+        this.ssdatadivArray = res.data.realNHours[0].nHours;
+        this.dataweather = res.data.outlookNowcastings[0].outlook;
+        this.chanchengList = res.data.outlookNowcastings[0].nowcasting
+        this.nanhaiList = res.data.outlookNowcastings[1].nowcasting
+        this.shundeList = res.data.outlookNowcastings[2].nowcasting
+        this.gaomingList = res.data.outlookNowcastings[3].nowcasting
+        this.sanshuiList = res.data.outlookNowcastings[4].nowcasting
+      });
+    },
+    // 点击切换
+    Clickswitch() {
+      if (this.dataForm.dist === "禅城区") {
+        Gethomemore().then(res => {
+          this.dataForm = res.data.realNHours[1].real;
+          for (var i = 0; i < res.data.realNHours[1].nHours.length; i++) {
+            var temp = `${imgweather}${res.data.realNHours[1].nHours[i].w}.png`;
+            res.data.realNHours[1].nHours[i].w = temp;
+          }
+          this.ssdatadivArray = res.data.realNHours[1].nHours;
+        });
+      } else if (this.dataForm.dist === "南海区") {
+        Gethomemore().then(res => {
+          this.dataForm = res.data.realNHours[2].real;
+          for (var i = 0; i < res.data.realNHours[2].nHours.length; i++) {
+            var temp = `${imgweather}${res.data.realNHours[2].nHours[i].w}.png`;
+            res.data.realNHours[2].nHours[i].w = temp;
+          }
+          this.ssdatadivArray = res.data.realNHours[2].nHours;
+        });
+      } else if (this.dataForm.dist === "顺德区") {
+        Gethomemore().then(res => {
+          this.dataForm = res.data.realNHours[3].real;
+          for (var i = 0; i < res.data.realNHours[3].nHours.length; i++) {
+            var temp = `${imgweather}${res.data.realNHours[3].nHours[i].w}.png`;
+            res.data.realNHours[3].nHours[i].w = temp;
+          }
+          this.ssdatadivArray = res.data.realNHours[3].nHours;
+        });
+      } else if (this.dataForm.dist === "高明区") {
+        Gethomemore().then(res => {
+          this.dataForm = res.data.realNHours[4].real;
+          for (var i = 0; i < res.data.realNHours[4].nHours.length; i++) {
+            var temp = `${imgweather}${res.data.realNHours[4].nHours[i].w}.png`;
+            res.data.realNHours[4].nHours[i].w = temp;
+          }
+          this.ssdatadivArray = res.data.realNHours[4].nHours;
+        });
+      } else if (this.dataForm.dist === "三水区") {
+        Gethomemore().then(res => {
+          this.dataForm = res.data.realNHours[0].real;
+          for (var i = 0; i < res.data.realNHours[0].nHours.length; i++) {
+            var temp = `${imgweather}${res.data.realNHours[0].nHours[i].w}.png`;
+            res.data.realNHours[0].nHours[i].w = temp;
+          }
+          this.ssdatadivArray = res.data.realNHours[0].nHours;
+        });
+      }
+    },
+    // 获取10天天气预报接口数据
+    _Getshare10 () {
+      Getshare10().then(res => {
+        const temp = res.data
+        this.navtime = temp.datetime
+        for (var i = 0; i < temp.nDay.length; i++) {
+          var tempimg = `${imgweather}${temp.nDay[i].wb}.png`;
+          temp.nDay[i].wb = tempimg;
+        }
+        this.swsArray = temp.nDay
+        this.SET_CANVASTEN(temp)
+      })
+    },
+    // 获取15天天气预报接口数据
+    _Getshare15 () {
+      Getshare15().then(res => {
+        const str = res.data
+        for (var i = 0; i < str.nDay.length; i++) {
+          var strimg = `${imgweather}${str.nDay[i].wbi}.png`
+          str.nDay[i].wbi = strimg
+        }
+        this.swsArraytoo = str.nDay
+        this.SET_CANVASFIVE(str)
+      })
+    },
+    ...mapMutations([
+      'SET_CANVASTEN',
+      'SET_CANVASFIVE'
+    ])
   },
   mounted() {
-    myScroll.upScroll("demo", "-36px", 3200)
-    myScroll.upScroll("demo2", "-36px", 2000)
+    myScroll.upScroll("demo", "-36px", 3200);
+    myScroll.upScroll("demo2", "-36px", 2000);
     this.$nextTick(() => {
-      setTimeout(() => {
-
-      }, 20)
-    })
+      setTimeout(() => {}, 20);
+    });
+    this._Gethomemore();
+    this._Getshare10()
+    this._Getshare15()
   }
-}
+};
 </script>
 <style scoped lang="scss">
 @import "~common/scss/color";
@@ -754,9 +796,10 @@ export default {
                           }
                           > .ws {
                             font-size: 16px;
-                            line-height: 18px;
+                            line-height: 38px;
                             text-align: left;
                             text-indent: 5px;
+                            display: inline;
                           }
                         }
                       }

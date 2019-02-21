@@ -4,8 +4,8 @@ const weatherMonitor = () =>
 const cloud = () =>
   import ('components/article/weatherMonitor/cloud')
 
-const radar = () =>
-  import ('components/article/weatherMonitor/radar')
+const sRadar = () =>
+  import ('components/article/weatherMonitor/sRadar')
 
 const xradar = () =>
   import ('components/article/weatherMonitor/xradar')
@@ -25,9 +25,9 @@ export default [{
   name: 'cloud',
   component: cloud
 }, {
-  path: 'radar',
-  name: 'radar',
-  component: radar
+  path: 'sRadar',
+  name: 'sRadar',
+  component: sRadar
 }, {
   path: 'xradar',
   name: 'xradar',
