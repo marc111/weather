@@ -398,6 +398,9 @@
               <homeRightrain />
             </div>
             <!-- tab栏图片 -->
+            <div class="weathertabimg">
+              <home-tabimg />
+            </div>
             <!-- 空气质量 -->
             <div class="tablewarn">
               <homeTablewarn />
@@ -453,6 +456,7 @@ import homeNotice from "./home-notice";
 import homeComm from "./home-comm";
 import homeWord from "./home-word";
 import homeFirendlink from "./home-firendlink";
+import homeTabimg from './home-tabimg'
 import { Gethomemore, Getshare10, Getshare15 } from "api/home";
 import { imgweather } from "api/config";
 
@@ -475,7 +479,8 @@ export default {
     homeNotice,
     homeComm,
     homeWord,
-    homeFirendlink
+    homeFirendlink,
+    homeTabimg
   },
   data() {
     return {
