@@ -71,7 +71,7 @@ export default {
   data () {
     return {
       showlist: false,
-      currentIndex: 8,
+      currentIndex: 0,
       model1: '全市',
       flag: 'map',
       awshouData: awshouData.data,

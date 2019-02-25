@@ -1,5 +1,6 @@
 export default {
   catalog: [],
+  weatherList: [],
   website:{},
   status: false,
   iconData: {
@@ -49,11 +50,18 @@ export default {
       weatherMonitor: {},
       visibility: {},
       realScene: {},
+      aws: {
+        icon: require('components/article/img/content-nav/L1_7.png'),
+        iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
+      },
       sRadar: {
         icon: require('components/article/img/content-nav/L1_7.png'),
         iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
       },
-      xRadar: {},
+      xRadar: {
+        icon: require('components/article/img/content-nav/L1_7.png'),
+        iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
+      },
       cloud: {
         icon: require('components/article/img/content-nav/L1_7.png'),
         iconCurrent: require('components/article/img/content-nav/L1_7_2.png')
@@ -168,5 +176,8 @@ export default {
         iconCurrent: require('components/article/img/content-nav/L8_2_2.png')
       }
     }
+  },
+  footerData: {
+
   }
 }
